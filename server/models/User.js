@@ -20,6 +20,12 @@ const userSchema = new Schema (
             required: true,
             minlength: 8
         },
+        routine: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Routine'
+            }
+        ],
         comments: [
             {
                 type: Schema.Types.ObjectId,
