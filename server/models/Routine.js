@@ -1,50 +1,30 @@
-const { Schema, model } = require('mongoose')
-//date formate here <---- utils/dateFormat ---->
+const {Schema, model} = require('mongoose')
+const dateFormat = require('../utils/dateFormat')
 
 const routineSchema = new Schema (
-    {
-        workoutType: {
-            type: String,
-            required: 'What type of workout is this?'
-        },
-        exerciseEquipment: {
-            type: String
-        },
-        exercise: {
-            type: String,
-            required: 'Leave a workout!',
-            minlength: 1,
-            maxlength: 280
-        },
-        sets: {
-            type: Integer
-        },
-        reps: {
-            type: Integer
-        },
-        // createdAt: {
-        //     type: Date,
-        //     default: Date.now,
-        //     get: timestamp => dateFormat(timestamp)
-        // },
-        username: {
-            type: String,
-            required: true
-        },
-        createdAt: {
-            type: Date, 
-            default: Date.now
-            //get timestamp
-        }
-
+   { 
+    workoutType: {
+        type: String,
+        required: 'What type of workout is this?'
     },
-    {
-        toJSON: {
-            getters: true
-        }
+    username: {
+        type: [User],
+        required: true
+    },
+    exercises: [Exercise],
+    createdAt: {
+        type: Date, 
+        default: Date.now,
+        get: timestamp => dateFormat(timestamp)
     }
+},
+{
+    toJSON: {
+        getters: true
+    }
+}
 )
 
 const Routine = model('Routine', routineSchema)
 
-module.exports = routineSchema;
+module.exports = Routine;

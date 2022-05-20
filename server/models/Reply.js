@@ -1,11 +1,12 @@
 const { Schema } = requrie('mongoose')
-// date format
+const dateFormat = require('../utils/dateFormat')
 
-const responseSchema = new Schema (
+const replySchema = new Schema (
     {
-        responseBody: {
+        replyBody: {
             type: String,
             required: true,
+            minlength: 1,
             maxlength: 280
         },
         username: {
@@ -15,7 +16,7 @@ const responseSchema = new Schema (
         createdAt: {
             type: Date,
             default: Date.now,
-            // get timestamp
+            get: timestamp => dateFormat(timestamp)
         }
     },
     {
@@ -25,4 +26,4 @@ const responseSchema = new Schema (
     }
 )
 
-module.exports = responseSchema
+module.exports = replySchema
