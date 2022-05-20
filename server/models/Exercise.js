@@ -12,6 +12,9 @@ const exerciseSchema = new Schema (
         equipment: {
             type: String
         },
+        time: {
+            type: Integer
+        },
         weight: {
             type: Integer
         },
