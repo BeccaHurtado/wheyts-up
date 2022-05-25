@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought } = require('../models');
+const { User, Thought, Routine, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -28,10 +28,20 @@ const resolvers = {
                 .populate('friends')
                 .populate('thoughts');
         },
-        // routines(): [Routine]
-        // routine(): Routine
-        // Exercises(): [Exercise]
-        // Exercise(): Exercise
+        routines: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Routine.find(params).sort({ createdAt: -1 });
+        },
+        routine: async (parent, { _id }) => {
+            return Routine.findOne({ _id });
+        },
+        exercises: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Exercise.find(params).sort({ createdAt: -1 });
+        },
+        exercise: async (parent, { _id }) => {
+            return Exercise.findOne({ _id });
+        }
     },
 
     Mutation: {
