@@ -8,13 +8,8 @@ const routineSchema = new Schema (
         required: 'Name your routine!'
     },
     workoutType: {
-        type: Array,
-        title: "Workout Type",
-        items: {
-            type: String,
-            enum: ["weights", "cardio", "calisthenics", "weights + cardio", "weigths + calisthenics", "cardio + calisthenics", "other" ]
-        },
-         uniqueItems: true
+        type: String,
+        required: 'What type of workout is this?' 
     },
     username: {
         type: [User],
