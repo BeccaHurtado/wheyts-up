@@ -97,15 +97,42 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        // deleteWorkout
-        // editWorkout
-        // deleteExercise
-        // editExercise
+        deleteRoutine: async (parent, args, context) => {
+            //
+        },
+        editRoutine: async (parent, args, context) => {
+            if (context.user) {
+                const routine = await Routine.create({ ...args, username: context.user.username });
 
-    }
-};
+                await User.findByIdAndUpdate(
+                    // { _id: context.user._id },
+                    { $push: { routine: routine._id } },
+                    { new: true }
+                );
+
+                return routine;
+            }
+        },
+        deleteExercise: async (parent, args, context) => {
+            //
+        },
+        editExercise: async (parent, args, context) => {
+            if (context.user) {
+                const exercise = await Exercise.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    // { _id: context.user._id },
+                    { $push: { exercise: exercise._id } },
+                    { new: true }
+                );
+
+                return exercise;
+            }
+
+        }
+    };
 
 
-//     (rating ?)-- using materialUI
+    //     (rating ?)-- using materialUI
 
-module.exports = resolvers;
+    module.exports = resolvers;
