@@ -12,6 +12,7 @@ type User {
 }
 
 type Routine {
+    _id: ID
     routineName: String
     workoutType: String
     username: [User]
@@ -20,6 +21,7 @@ type Routine {
 }
 
 type Exercise {
+    _id: ID
     name: String
     equipment: String
     time: Int
@@ -37,10 +39,10 @@ type Query {
     me: User
     users: [User]
     user(username: String!): User
-    routines(): [Routine]
-    routine(): Routine
-    Exercises(): [Exercise]
-    Exercise(): Exercise
+    routines(username: String!): [Routine]
+    routine(_id: ID!): Routine
+    Exercises(username: String!): [Exercise]
+    Exercise(_id: ID!): Exercise
 }
 
 type Mutation {
