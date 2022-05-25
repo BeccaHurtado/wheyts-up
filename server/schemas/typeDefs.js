@@ -34,14 +34,26 @@ type Auth {
 }
 
 type Query {
+    me: User
     users: [User]
+    user(username: String!): User
+    routines(): [Routine]
+    routine(): Routine
+    Exercises(): [Exercise]
+    Exercise(): Exercise
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addWorkout(): Routine
+    deleteWorkout(): User
+    editWorkout(): Routine
+    addExercise(): Exercise
+    deleteExercise(): User
+    editExercise(): Exercise
 }
-`
+`;
 
 // export the typeDefs
 module.exports = typeDefs;
