@@ -48,12 +48,12 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addWorkout(): Routine
-    deleteWorkout(): User
-    editWorkout(): Routine
-    addExercise(): Exercise
-    deleteExercise(): User
-    editExercise(): Exercise
+    addRoutine(routineName: String!, workoutType: String!, username: String!, exercises: [Exercise]!): Routine
+    deleteRoutine(routineName: String!): User
+    editRoutine(routineName: String!, workoutType: String!, username: String!, exercises: [Exercise]!): Routine
+    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
+    deleteExercise(name: String!): User
+    editExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
 }
 `;
 
