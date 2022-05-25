@@ -67,10 +67,38 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        // addWorkout
+        addRoutine: async (parent, args, context) => {
+            if (context.user) {
+                const routine = await Routine.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { routine: routine._id } },
+                    { new: true }
+                );
+
+                return routine;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        addExercise: async (parent, args, context) => {
+            if (context.user) {
+                const exercise = await Exercise.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { exercise: exercise._id } },
+                    { new: true }
+                );
+
+                return exercise;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
         // deleteWorkout
         // editWorkout
-        // addExercise
         // deleteExercise
         // editExercise
 
