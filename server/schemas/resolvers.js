@@ -130,9 +130,10 @@ const resolvers = {
             }
 
         }
-    };
+    }
+};
 
 
-    //     (rating ?)-- using materialUI
+//     (rating ?)-- using materialUI
 
-    module.exports = resolvers;
+module.exports = resolvers;
