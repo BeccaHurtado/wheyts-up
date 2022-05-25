@@ -11,6 +11,23 @@ type User {
     friends: [User]
 }
 
+type Routine {
+    routineName: String
+    workoutType: String
+    username: [User]
+    exercises: [Exercise]
+    createdAt: Date
+}
+
+type Exercise {
+    name: String
+    equipment: String
+    time: Int
+    weight: Int
+    sets: Int
+    reps: Int
+}
+
 type Auth {
     token: ID!
     user: User
