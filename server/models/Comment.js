@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose')
-const responseSchema = require('./Response')
+const replySchema = require('./Reply')
 const dateFormat = require('../utils/dateFormat')
 
 const commentSchema = new Schema (
@@ -19,7 +19,7 @@ const commentSchema = new Schema (
             type: String,
             required: true
         },
-        response: [responseSchema]
+        reply: [replySchema]
     },
     {
         toJSON: {
