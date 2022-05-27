@@ -7,8 +7,23 @@ type User {
     email: String
     friendCount: Int
     comments: [Comment]
-    routine: [Routine]
+    routines: [Routine]
     friends: [User]
+}
+
+type Reply {
+    _id: ID
+    replyBody: String
+    username: [User]
+    createdAt: String
+}
+
+type Comment {
+    _id: ID
+    commentText: String
+    createdAt: String
+    username: [User]
+    replies: [Reply]
 }
 
 type Routine {
@@ -17,7 +32,7 @@ type Routine {
     workoutType: String
     username: [User]
     exercises: [Exercise]
-    createdAt: Date
+    createdAt: String
 }
 
 type Exercise {
@@ -41,16 +56,16 @@ type Query {
     user(username: String!): User
     routines(username: String!): [Routine]
     routine(_id: ID!): Routine
-    Exercises(username: String!): [Exercise]
-    Exercise(_id: ID!): Exercise
+    exercises(username: String!): [Exercise]
+    exercise(_id: ID!): Exercise
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addRoutine(routineName: String!, workoutType: String!, username: String!, exercises: [Exercise]!): Routine
+    addRoutine(routineName: String!, workoutType: String!, username: String!, exercises: String!): Routine
     deleteRoutine(routineName: String!): User
-    editRoutine(routineName: String!, workoutType: String!, username: String!, exercises: [Exercise]!): Routine
+    editRoutine(routineName: String!, workoutType: String!, username: String!, exercises: String!): Routine
     addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
     deleteExercise(name: String!): User
     editExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise

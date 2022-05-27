@@ -12,10 +12,15 @@ const routineSchema = new Schema (
         required: 'What type of workout is this?' 
     },
     username: {
-        type: [User],
-        required: true
+       type: Schema.Types.ObjectId,
+       ref: 'User'
     },
-    exercises: [Exercise],
+    exercises: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Exercise'
+        }
+    ],
     createdAt: {
         type: Date, 
         default: Date.now,
