@@ -63,7 +63,7 @@ const resolvers = {
         },
         addRoutine: async (parent, args, context) => {
             if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user.username });
+                const routine = await Routine.create({ ...args, username: context.user._id});
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
@@ -76,12 +76,12 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        addExercise: async (parent, args, context) => {
+        addExercise: async (parent, {name, equipment, time, weight, sets, reps, routineId}, context) => {
             if (context.user) {
-                const exercise = await Exercise.create({ ...args, username: context.user.username });
+                const exercise = await Exercise.create({name, equipment, time, weight, sets, reps});
 
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id },
+                await Routine.findByIdAndUpdate(
+                    { _id: routineId},
                     { $push: { exercise: exercise._id } },
                     { new: true }
                 );
