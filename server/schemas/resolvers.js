@@ -62,66 +62,54 @@ const resolvers = {
             return { token, user };
         },
         addRoutine: async (parent, args, context) => {
-            if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user.username });
+            // if (context.user) {
+                const routine = await Routine.create({ ...args, username: "becca"})//context.user.username });
 
                 await User.findByIdAndUpdate(
-                    { _id: context.user._id },
+                    { _id: "629049dd926412cb4622ef71"},//context.user._id },
                     { $push: { routine: routine._id } },
                     { new: true }
                 );
 
                 return routine;
-            }
+            // }
 
-            throw new AuthenticationError('You need to be logged in!');
+            // throw new AuthenticationError('You need to be logged in!');
         },
         addExercise: async (parent, args, context) => {
-            if (context.user) {
-                const exercise = await Exercise.create({ ...args, username: context.user.username });
+            // if (context.user) {
+                const exercise = await Exercise.create({ ...args, username: "becca"}) //context.user.username });
 
                 await User.findByIdAndUpdate(
-                    { _id: context.user._id },
+                    { _id: "629049dd926412cb4622ef71"},//context.user._id },
                     { $push: { exercise: exercise._id } },
                     { new: true }
                 );
 
                 return exercise;
-            }
+            // }
 
-            throw new AuthenticationError('You need to be logged in!');
+            // throw new AuthenticationError('You need to be logged in!');
         },
-        deleteRoutine: async (parent, args, context) => {
-            //
+        deleteRoutine: async (parent, { routineId }) => {
+            return Routine.findOneAndDelete({ _id: routineId})
         },
         editRoutine: async (parent, args, context) => {
-            if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user.username });
-
-                await User.findByIdAndUpdate(
-                    // { _id: context.user._id },
-                    { $push: { routine: routine._id } },
-                    { new: true }
-                );
+            // if (context.user) {
+                const routine = await Routine.findOneAndUpdate({ _id: args._id}, { $set:args },{new: true})// username: context.user.username });
 
                 return routine;
-            }
+            // }
         },
-        deleteExercise: async (parent, args, context) => {
-            //
+        deleteExercise: async (parent, { exerciseId }) => {
+            return Exercise.findOneAndDelete({ _id: exerciseId })
         },
         editExercise: async (parent, args, context) => {
-            if (context.user) {
-                const exercise = await Exercise.create({ ...args, username: context.user.username });
-
-                await User.findByIdAndUpdate(
-                    // { _id: context.user._id },
-                    { $push: { exercise: exercise._id } },
-                    { new: true }
-                );
+            // if (context.user) {
+                const exercise = await Exercise.findOneAndUpdate({ _id: args._id }, { $set:args }, { new: true });
 
                 return exercise;
-            }
+            // }
 
         }
     }
