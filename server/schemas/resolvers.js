@@ -80,33 +80,33 @@ const resolvers = {
             // if (context.user) {
                 const exercise = await Exercise.create({ ...args, username: "becca"}) //context.user.username });
 
-                await User.findByIdAndUpdate(
-                    { _id: "629049dd926412cb4622ef71"},//context.user._id },
-                    { $push: { exercise: exercise._id } },
-                    { new: true }
-                );
+                // await User.findByIdAndUpdate(
+                //     { _id: "629049dd926412cb4622ef71"},//context.user._id },
+                //     { $push: { exercise: exercise._id } },
+                //     { new: true }
+                // );
 
                 return exercise;
             // }
 
             // throw new AuthenticationError('You need to be logged in!');
         },
-        deleteRoutine: async (parent, { routineId }) => {
-            return Routine.findOneAndDelete({ _id: routineId})
+        deleteRoutine: async (parent, { _id }) => {
+            return Routine.findByIdAndDelete({ _id: _id})
         },
         editRoutine: async (parent, args, context) => {
             // if (context.user) {
-                const routine = await Routine.findOneAndUpdate({ _id: args._id}, { $set:args },{new: true})// username: context.user.username });
+                const routine = await Routine.findByIdAndUpdate({ _id: args._id}, { $set:args },{new: true})// username: context.user.username });
 
                 return routine;
             // }
         },
-        deleteExercise: async (parent, { exerciseId }) => {
-            return Exercise.findOneAndDelete({ _id: exerciseId })
+        deleteExercise: async (parent, { _id }) => {
+            return Exercise.findOneAndDelete({ _id: _id })
         },
         editExercise: async (parent, args, context) => {
             // if (context.user) {
-                const exercise = await Exercise.findOneAndUpdate({ _id: args._id }, { $set:args }, { new: true });
+                const exercise = await Exercise.findByIdAndUpdate({ _id: args._id }, { $set:args }, { new: true });
 
                 return exercise;
             // }

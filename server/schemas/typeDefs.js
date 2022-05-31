@@ -60,7 +60,7 @@ type Query {
     exercise(_id: ID!): Exercise
 }
 
-input exerciseInput{
+input exerciseInput {
     name: String
     equipment: String
     time: Int
@@ -68,15 +68,16 @@ input exerciseInput{
     sets: Int
     reps: Int
 }
+
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addRoutine(routineName: String!, workoutType: String!, userId: ID!, exercises: exerciseInput!): Routine
-    deleteRoutine(routineName: String!): User
-    editRoutine(routineName: String!, _id: ID!): Routine
+    deleteRoutine(_id: ID!): User
+    editRoutine(routineName: String!, _id: ID!, workoutType: String!): Routine
     addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
     deleteExercise(name: String!): User
-    editExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
+    editExercise(_id: ID!, name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
 }
 `;
 
