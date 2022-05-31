@@ -19,20 +19,38 @@ export const ADD_USER = gql`
       user {
         _id
         username
+        email
       }
     }
   }
 `;
 
 export const ADD_ROUTINE = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+  mutation addRoutine($routineName: String!, $workoutType: String!, $userId: ID, $exercises: exerciseInput!) {
+    addRoutine(routineName: $routineName, workoutType: $workoutType, userId: $userId, exercises: $exercises) {
       _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
+      routineName
+      workoutType
+      exercises {
+        name
+        equipment
+        time
+        weight
+        sets
+        reps
+      }
+    }
+  }
+`;
+
+export const EDIT_ROUTINE = gql`
+  mutation editRoutine($routineName: String!, $id: ID!, $workouttype: String!, $exercises: exerciseInput!) {
+    editRoutine(routineName: $routineName, _id: $id, workoutType: $workoutType, exercises: $exercises) {
+      _id
+      routineName
+      workoutType
+      exercises {
+        name
         _id
       }
     }
@@ -40,67 +58,60 @@ export const ADD_ROUTINE = gql`
 `;
 
 export const DELETE_ROUTINE = gql`
-  mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-    addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
+  mutation deleteReaction($id: ID!) {
+    deleteReaction(_id: $id) {
       _id
-      reactionCount
-      reactions {
-        _id
-        reactionBody
-        createdAt
-        username
-      }
     }
   }
 `;
 
-export const ADD_EXERCISE = gql`
-  mutation addFriend($id: ID!) {
-    addFriend(friendId: $id) {
-      _id
-      username
-      friendCount
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
+// export const ADD_EXERCISE = gql`
+//   mutation addFriend($id: ID!) {
+//     addFriend(friendId: $id) {
+//       _id
+//       username
+//       friendCount
+//       friends {
+//         _id
+//         username
+//       }
+//     }
+//   }
+// `;
 
-export const DELETE_EXERCISE = gql`
-  mutation removeFriend($id: ID!) {
-    removeFriend(id: $id) {
-      _id
-      username
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
-export const EDIT_EXERCISE = gql`
-  mutation removeFriend($id: ID!) {
-    removeFriend(id: $id) {
-      _id
-      username
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
-export const REMOVE_FRIEND = gql`
-  mutation removeFriend($id: ID!) {
-    removeFriend(id: $id) {
-      _id
-      username
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
+// export const DELETE_EXERCISE = gql`
+//   mutation removeFriend($id: ID!) {
+//     removeFriend(id: $id) {
+//       _id
+//       username
+//       friends {
+//         _id
+//         username
+//       }
+//     }
+//   }
+// `;
+// export const EDIT_EXERCISE = gql`
+//   mutation removeFriend($id: ID!) {
+//     removeFriend(id: $id) {
+//       _id
+//       username
+//       friends {
+//         _id
+//         username
+//       }
+//     }
+//   }
+// `;
+// export const REMOVE_FRIEND = gql`
+//   mutation removeFriend($id: ID!) {
+//     removeFriend(id: $id) {
+//       _id
+//       username
+//       friends {
+//         _id
+//         username
+//       }
+//     }
+//   }
+// `;

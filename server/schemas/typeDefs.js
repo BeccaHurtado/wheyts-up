@@ -74,7 +74,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addRoutine(routineName: String!, workoutType: String!, userId: ID!, exercises: exerciseInput!): Routine
     deleteRoutine(_id: ID!): User
-    editRoutine(routineName: String!, _id: ID!, workoutType: String!): Routine
+    editRoutine(routineName: String!, _id: ID!, workoutType: String!, exercises: exerciseInput!): Routine
     addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
     deleteExercise(name: String!): User
     editExercise(_id: ID!, name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise

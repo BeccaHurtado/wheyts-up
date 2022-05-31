@@ -80,11 +80,11 @@ const resolvers = {
             // if (context.user) {
                 const exercise = await Exercise.create({ ...args, username: "becca"}) //context.user.username });
 
-                // await User.findByIdAndUpdate(
-                //     { _id: "629049dd926412cb4622ef71"},//context.user._id },
-                //     { $push: { exercise: exercise._id } },
-                //     { new: true }
-                // );
+                await User.findByIdAndUpdate(
+                    { _id: "629049dd926412cb4622ef71"},//context.user._id },
+                    { $push: { exercise: exercise._id } },
+                    { new: true }
+                );
 
                 return exercise;
             // }
@@ -104,9 +104,10 @@ const resolvers = {
         deleteExercise: async (parent, { _id }) => {
             return Exercise.findOneAndDelete({ _id: _id })
         },
-        editExercise: async (parent, args, context) => {
+        editExercise: async (parent, Exercise, context, args) => {
             // if (context.user) {
-                const exercise = await Exercise.findByIdAndUpdate({ _id: args._id }, { $set:args }, { new: true });
+                // var exercise = {_id: exercise._id}
+                const exercise = await Exercise.findByIdAndUpdate({ _id: Exercise._id }, { $set:args }, { new: true });
 
                 return exercise;
             // }
