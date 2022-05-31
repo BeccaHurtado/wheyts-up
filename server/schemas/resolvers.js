@@ -77,27 +77,33 @@ const resolvers = {
 
             // throw new AuthenticationError('You need to be logged in!');
         },
-        addExercise: async (parent, { routineId, name, equipment, time, weight, sets, reps }, context) => {
-            if (context.user) {
-                const updatedRoutine = await Routine.findOneAndUpdate(
-                    { _id: routineId },
-                    { $push: { exercise: { name, equipment, time, weight, sets, reps } } },
-                    { new: true }
-                );
-                return updatedRoutine;
-            }
+        // { routineId, name, equipment, time, weight, sets, reps }
+        // { name: context.name, equipment: context.equipment, time: context.time, weight: context.weight, sets: context.sets, reps: context.reps }
+        // addExercise: async (parent, args, context) => {
+        //     if (context.user) {
+
+        //         const exercise = Exercise.create({ ...args, username: "becca" });
+
+        //         const updatedRoutine = await Routine.findOneAndUpdate(
+        //             { _id: contex.routineId },
+        //             { $push: { exercise: exercise._id } },
+        //             { new: true }
+        //         );
+        //         return updatedRoutine;
+        //     }
+        // },
+        addExercise: async (parent, args, context) => {
+            const exercise = await Exercise.create({ ...args, username: "becca" }) //context.user.username });
+
+            await Routine.findByIdAndUpdate(
+                { _id: context.routineId },//context.user._id }, "629049dd926412cb4622ef71"
+                // { routineId: context.routine._id },
+                { $push: { exercise: exercise._id } },
+                { new: true }
+            );
+
+            return exercise;
         },
-        //  async (parent, args, context) => {
-        //     const exercise = await Exercise.create({ ...args, username: "becca" }) //context.user.username });
-
-        //     await Routine.findByIdAndUpdate(
-        //         { _id: context.routineId },//context.user._id }, "629049dd926412cb4622ef71"
-        //         // { routineId: context.routine._id },
-        //         { $push: { exercise: exercise._id } },
-        //         { new: true }
-        //     );
-
-        //     return exercise;
 
         // throw new AuthenticationError('You need to be logged in!');
 
