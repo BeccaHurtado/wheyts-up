@@ -82,6 +82,7 @@ const resolvers = {
 
                 await User.findByIdAndUpdate(
                     { _id: "629049dd926412cb4622ef71"},//context.user._id },
+                    {routineId: context.routine._id},
                     { $push: { exercise: exercise._id } },
                     { new: true }
                 );

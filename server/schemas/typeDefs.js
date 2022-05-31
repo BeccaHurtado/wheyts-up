@@ -61,6 +61,7 @@ type Query {
 }
 
 input exerciseInput {
+    routineId: ID
     name: String
     equipment: String
     time: Int
@@ -75,7 +76,7 @@ type Mutation {
     addRoutine(routineName: String!, workoutType: String!, userId: ID!, exercises: exerciseInput!): Routine
     deleteRoutine(_id: ID!): User
     editRoutine(routineName: String!, _id: ID!, workoutType: String!, exercises: exerciseInput!): Routine
-    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
+    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId: ID!): Exercise
     deleteExercise(name: String!): User
     editExercise(_id: ID!, name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
 }
