@@ -24,6 +24,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
+          <Header />
           <Routes>
             <Route
               path="/"
