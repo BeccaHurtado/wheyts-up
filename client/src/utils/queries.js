@@ -9,4 +9,8 @@ export const QUERY_ROUTINES = gql`
     }
  }
     
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> c024d473a023b3d9a29ad742f2e126385c450abf

@@ -38,7 +38,10 @@ export const ADD_ROUTINE = gql`
         weight
         sets
         reps
+<<<<<<< HEAD
       }
+=======
+>>>>>>> c024d473a023b3d9a29ad742f2e126385c450abf
     }
   }
 `;
@@ -114,4 +117,8 @@ export const DELETE_ROUTINE = gql`
 //       }
 //     }
 //   }
+<<<<<<< HEAD
 // `;
+=======
+// `;
+>>>>>>> c024d473a023b3d9a29ad742f2e126385c450abf

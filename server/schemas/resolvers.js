@@ -28,10 +28,10 @@ const resolvers = {
             return Routine.find(params).sort({ createdAt: -1 });
         },
         routine: async (parent, { _id }) => {
-            return Routine.findOne({ _id });
+            return Routine.findOne({ _id }).populate("exercises");
         },
-        exercises: async (parent, { username }) => {
-            const params = username ? { username } : {};
+        exercises: async (parent, { routineId }) => {
+            const params = routineId ? { routineId } : {};
             return Exercise.find(params).sort({ createdAt: -1 });
         },
         exercise: async (parent, { _id }) => {
@@ -77,16 +77,15 @@ const resolvers = {
 
             // throw new AuthenticationError('You need to be logged in!');
         },
-        addExercise: async (parent, args, context) => {
-            // if (context.user) {
-                const updatedRoutine = await Exercise.findOneAndUpdate({ ...args, username: "becca"}) //context.user.username });
-               
-                await Routine.findOneAndUpdate(
-                    //{ _id: "629049dd926412cb4622ef71"},//context.user._id },
-                    {routineId: routine._id},
-                    { $push: { exercises: [Schema.Types.exerciseSchema] } },
+        addExercise: async (parent, {name, equipment, time, weight, sets, reps, routineId}, context) => {
+            if (context.user) {
+                const exercise = await Exercise.create({name, equipment, time, weight, sets, reps});
+
+                await Routine.findByIdAndUpdate(
+                    { _id: routineId},
+                    { $addToSet: {exercises: exercise._id} },
                     { new: true }
-                );
+                ).populate("exercises");
 
                 return updatedRoutine;
             // }
