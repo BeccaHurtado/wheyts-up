@@ -22,21 +22,21 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__v -password');
         },
-        routines: async (parent, { username }) => {
+        routines: async (parent, { userId }) => {
             const params = username ? { username } : {};
-            return Routine.find(params).sort({ createdAt: -1 });
+            return Routine.find(params).sort({ createdAt: -1 }).populate("exercise");
         },
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id });
         }
-        // ,
-        // exercises: async (parent, { username }) => {
-        //     const params = username ? { username } : {};
-        //     return Exercise.find(params).sort({ createdAt: -1 });
-        // },
-        // exercise: async (parent, { _id }) => {
-        //     return Exercise.findOne({ _id });
-        // }
+        ,
+        exercises: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Exercise.find(params).sort({ createdAt: -1 });
+        },
+        exercise: async (parent, { _id }) => {
+            return Exercise.findOne({ _id });
+        }
     },
 
     Mutation: {

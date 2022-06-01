@@ -54,7 +54,7 @@ type Query {
     me: User
     users: [User]
     user(username: String!): User
-    routines(username: String!): [Routine]
+    routines(userId: ID): [Routine]
     routine(_id: ID!): Routine
     exercises(username: String!): [Exercise]
     exercise(_id: ID!): Exercise
