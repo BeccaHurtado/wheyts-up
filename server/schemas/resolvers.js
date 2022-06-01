@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought, Routine, Exercise } = require('../models');
+const { User, Routine, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -22,9 +22,9 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__v -password');
         },
-        routines: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Routine.find(params).sort({ createdAt: -1 });
+        routines: async (parent, { userId }) => {
+            const params = userId ? { userId } : {};
+            return Routine.find(params).sort({ createdAt: -1 }).populate("exercises")
         },
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id }).populate("exercises");
@@ -91,34 +91,22 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        deleteRoutine: async (parent, args, context) => {
-            //
+        deleteRoutine: async (parent, {_id}) => {
+            return Routine.findByIdAndDelete({_id: _id})
         },
         editRoutine: async (parent, args, context) => {
             if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user.username });
-
-                await User.findByIdAndUpdate(
-                    // { _id: context.user._id },
-                    { $push: { routine: routine._id } },
-                    { new: true }
-                );
+                const routine = await Routine.findByIdAndUpdate({ _id: args._id}, {$set: args}, {new: true });
 
                 return routine;
             }
         },
-        deleteExercise: async (parent, args, context) => {
-            //
+        deleteExercise: async (parent, {_id }) => {
+            return Exercise.findOneAndDelete({ _id: _id})
         },
         editExercise: async (parent, args, context) => {
             if (context.user) {
-                const exercise = await Exercise.create({ ...args, username: context.user.username });
-
-                await User.findByIdAndUpdate(
-                    // { _id: context.user._id },
-                    { $push: { exercise: exercise._id } },
-                    { new: true }
-                );
+                const exercise = await Exercise.findByIdAndUpdate({ _id: args._id }, {$set:args}, {new: true});
 
                 return exercise;
             }
