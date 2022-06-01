@@ -27,10 +27,10 @@ const resolvers = {
             return Routine.find(params).sort({ createdAt: -1 });
         },
         routine: async (parent, { _id }) => {
-            return Routine.findOne({ _id });
+            return Routine.findOne({ _id }).populate("exercises");
         },
-        exercises: async (parent, { username }) => {
-            const params = username ? { username } : {};
+        exercises: async (parent, { routineId }) => {
+            const params = routineId ? { routineId } : {};
             return Exercise.find(params).sort({ createdAt: -1 });
         },
         exercise: async (parent, { _id }) => {
@@ -82,9 +82,9 @@ const resolvers = {
 
                 await Routine.findByIdAndUpdate(
                     { _id: routineId},
-                    { $push: { exercise: exercise._id } },
+                    { $addToSet: {exercises: exercise._id} },
                     { new: true }
-                );
+                ).populate("exercises");
 
                 return exercise;
             }
