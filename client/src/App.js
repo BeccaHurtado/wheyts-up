@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Home from './pages/Home'
@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RoutineList from './components/RoutineList';
+// import RoutineList from './components/RoutineList';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
