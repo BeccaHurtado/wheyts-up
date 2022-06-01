@@ -60,25 +60,16 @@ type Query {
     exercise(_id: ID!): Exercise
 }
 
-input exerciseInput {
-    routineId: ID
-    name: String
-    equipment: String
-    time: Int
-    weight: Int
-    sets: Int
-    reps: Int
-}
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addRoutine(routineName: String!, workoutType: String!, userId: ID!, exercises: exerciseInput): Routine
+    addRoutine(routineName: String!, workoutType: String!, userId: ID!): Routine
     deleteRoutine(_id: ID!): User
-    editRoutine(routineName: String!, _id: ID!, workoutType: String!, exercises: exerciseInput!): Routine
-    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId: ID!): Exercise
+    editRoutine(routineName: String!, _id: ID!, workoutType: String!): Routine
+    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId: ID!): Routine
     deleteExercise(name: String!): User
-    editExercise(_id: ID!, name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
+    editExercise(_id: ID!, name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Routine
 }
 `;
 

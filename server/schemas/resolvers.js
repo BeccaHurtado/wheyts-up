@@ -29,14 +29,14 @@ const resolvers = {
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id });
         }
-        // ,
-        // exercises: async (parent, { username }) => {
-        //     const params = username ? { username } : {};
-        //     return Exercise.find(params).sort({ createdAt: -1 });
-        // },
-        // exercise: async (parent, { _id }) => {
-        //     return Exercise.findOne({ _id });
-        // }
+        ,
+        exercises: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Exercise.find(params).sort({ createdAt: -1 });
+        },
+        exercise: async (parent, { _id }) => {
+            return Exercise.findOne({ _id });
+        }
     },
 
     Mutation: {
@@ -73,63 +73,36 @@ const resolvers = {
             );
 
             return routine;
-            // }
-
-            // throw new AuthenticationError('You need to be logged in!');
-        },
-        // { routineId, name, equipment, time, weight, sets, reps }
-        // { name: context.name, equipment: context.equipment, time: context.time, weight: context.weight, sets: context.sets, reps: context.reps }
-        // addExercise: async (parent, args, context) => {
-        //     if (context.user) {
-
-        //         const exercise = Exercise.create({ ...args, username: "becca" });
-
-        //         const updatedRoutine = await Routine.findOneAndUpdate(
-        //             { _id: contex.routineId },
-        //             { $push: { exercise: exercise._id } },
-        //             { new: true }
-        //         );
-        //         return updatedRoutine;
-        //     }
-        // },
-        addExercise: async (parent, args, context) => {
-            const exercise = await Exercise.create({ ...args, username: "becca" }) //context.user.username });
-
-            await Routine.findByIdAndUpdate(
-                { _id: context.routineId },//context.user._id }, "629049dd926412cb4622ef71"
-                // { routineId: context.routine._id },
-                { $push: { exercise: exercise._id } },
-                { new: true }
-            );
-
-            return exercise;
         },
 
-        // throw new AuthenticationError('You need to be logged in!');
-
-        deleteRoutine: async (parent, { _id }) => {
-            return Routine.findByIdAndDelete({ _id: _id })
+        addExercise:
         },
-        editRoutine: async (parent, args, context) => {
-            // if (context.user) {
-            const routine = await Routine.findByIdAndUpdate({ _id: args._id }, { $set: args }, { new: true })// username: context.user.username });
 
-            return routine;
-            // }
-        },
-        deleteExercise: async (parent, { _id }) => {
-            return Exercise.findOneAndDelete({ _id: _id })
-        },
-        editExercise: async (parent, Exercise, context, args) => {
-            // if (context.user) {
-            // var exercise = {_id: exercise._id}
-            const exercise = await Exercise.findByIdAndUpdate({ _id: Exercise._id }, { $set: args }, { new: true });
+    // throw new AuthenticationError('You need to be logged in!');
 
-            return exercise;
-            // }
+    deleteRoutine: async (parent, { _id }) => {
+        return Routine.findByIdAndDelete({ _id: _id })
+    },
+    editRoutine: async (parent, args, context) => {
+        // if (context.user) {
+        const routine = await Routine.findByIdAndUpdate({ _id: args._id }, { $set: args }, { new: true })// username: context.user.username });
 
-        }
+        return routine;
+        // }
+    },
+    deleteExercise: async (parent, { _id }) => {
+        return Exercise.findOneAndDelete({ _id: _id })
+    },
+    editExercise: async (parent, Exercise, context, args) => {
+        // if (context.user) {
+        // var exercise = {_id: exercise._id}
+        const exercise = await Exercise.findByIdAndUpdate({ _id: Exercise._id }, { $set: args }, { new: true });
+
+        return exercise;
+        // }
+
     }
+}
 };
 
 
