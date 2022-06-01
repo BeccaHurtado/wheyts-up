@@ -1,4 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { Schema } = require('mongoose');
 const { User, Thought, Routine, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -78,16 +79,16 @@ const resolvers = {
         },
         addExercise: async (parent, args, context) => {
             // if (context.user) {
-                const exercise = await Exercise.create({ ...args, username: "becca"}) //context.user.username });
-
-                await User.findByIdAndUpdate(
-                    { _id: "629049dd926412cb4622ef71"},//context.user._id },
-                    {routineId: context.routine._id},
-                    { $push: { exercise: exercise._id } },
+                const updatedRoutine = await Exercise.findOneAndUpdate({ ...args, username: "becca"}) //context.user.username });
+               
+                await Routine.findOneAndUpdate(
+                    //{ _id: "629049dd926412cb4622ef71"},//context.user._id },
+                    {routineId: routine._id},
+                    { $push: { exercises: [Schema.Types.exerciseSchema] } },
                     { new: true }
                 );
 
-                return exercise;
+                return updatedRoutine;
             // }
 
             // throw new AuthenticationError('You need to be logged in!');

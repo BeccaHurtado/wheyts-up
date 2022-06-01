@@ -6,11 +6,11 @@ const routineSchema = new Schema (
    { 
     routineName: {
         type: String,
-        required: 'Name your routine!'
+        // required: 'Name your routine!'
     },
     workoutType: {
         type: String,
-        required: 'What type of workout is this?' 
+        // required: 'What type of workout is this?' 
     },
     userId: {
        type: Schema.Types.ObjectId,

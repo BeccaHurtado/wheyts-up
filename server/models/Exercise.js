@@ -12,32 +12,16 @@ const exerciseSchema = new Schema (
             type: String
         },
         time: {
-            type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-                
-            // }
+            type: Number,   
         },
         weight: {
             type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-                
-            // }
         },
         sets: {
             type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-                
-            // }
         },
         reps: {
             type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-               
-            // }
         }
     },
     {
@@ -47,6 +31,6 @@ const exerciseSchema = new Schema (
     }
 )
 
-// const Exercise = model('Exercise', exerciseSchema)
+const Exercise = model('Exercise', exerciseSchema)
 
 module.exports = exerciseSchema;
