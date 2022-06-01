@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const exerciseSchema = new Schema (
+const exerciseSchema = new Schema(
     {
         name: {
             type: String,
@@ -15,28 +15,28 @@ const exerciseSchema = new Schema (
             type: Number,
             // validate: {
             //     validator: Number.isInteger,
-                
+
             // }
         },
         weight: {
             type: Number,
             // validate: {
             //     validator: Number.isInteger,
-                
+
             // }
         },
         sets: {
             type: Number,
             // validate: {
             //     validator: Number.isInteger,
-                
+
             // }
         },
         reps: {
             type: Number,
             // validate: {
             //     validator: Number.isInteger,
-               
+
             // }
         }
     },
