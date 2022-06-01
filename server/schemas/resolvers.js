@@ -27,11 +27,10 @@ const resolvers = {
             return Routine.find(params).sort({ createdAt: -1 }).populate("exercise");
         },
         routine: async (parent, { _id }) => {
-            return Routine.findOne({ _id });
-        }
-        ,
-        exercises: async (parent, { username }) => {
-            const params = username ? { username } : {};
+            return Routine.findOne({ _id }).populate("exercises");
+        },
+        exercises: async (parent, { routineId }) => {
+            const params = routineId ? { routineId } : {};
             return Exercise.find(params).sort({ createdAt: -1 });
         },
         exercise: async (parent, { _id }) => {
@@ -82,7 +81,11 @@ const resolvers = {
         // addExercise: async (parent, args, context) => {
         //     if (context.user) {
 
-        //         const exercise = Exercise.create({ ...args, username: "becca" });
+                await Routine.findByIdAndUpdate(
+                    { _id: routineId},
+                    { $addToSet: {exercises: exercise._id} },
+                    { new: true }
+                ).populate("exercises");
 
         //         const updatedRoutine = await Routine.findOneAndUpdate(
         //             { _id: contex.routineId },

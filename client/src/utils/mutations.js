@@ -38,7 +38,6 @@ export const ADD_ROUTINE = gql`
         weight
         sets
         reps
-      }
     }
   }
 `;
