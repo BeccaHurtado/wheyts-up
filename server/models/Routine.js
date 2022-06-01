@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose')
 const dateFormat = require('../utils/dateFormat')
-const exerciseSchema = require('./Exercise')
 
 const routineSchema = new Schema(
     {
@@ -12,17 +11,21 @@ const routineSchema = new Schema(
             type: String,
             required: 'What type of workout is this?'
         },
-        userId: {
+        username: {
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
+        exercises: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Exercise'
+            }
+        ],
         createdAt: {
             type: Date,
             default: Date.now,
             get: timestamp => dateFormat(timestamp)
-        },
-        exercises:
-            [exerciseSchema]
+        }
     },
     {
         toJSON: {
@@ -30,10 +33,6 @@ const routineSchema = new Schema(
         }
     }
 )
-
-routineSchema.virtual('exerciseCount').get(function () {
-    return this.exercises.length;
-});
 
 const Routine = model('Routine', routineSchema)
 
