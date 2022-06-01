@@ -1,4 +1,3 @@
-Head
 import React from 'react';
 import { useQuery } from '@apollo/client'
 import { QUERY_ROUTINES } from '../utils/queries'
@@ -6,7 +5,7 @@ import { QUERY_ROUTINES } from '../utils/queries'
 import { Menu, MenuItem, Button } from '@mui/material';
 
 function Home() {
-    const { loading, data } = useQuery(QUERY_ROUTINES)
+    const { data } = useQuery(QUERY_ROUTINES)
     const routines = data?.routines || []
     console.log(routines)
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,20 +46,6 @@ function Home() {
         </main>
     );
 };
-
-import { useQuery } from '@apollo/client'
-import { QUERY_ROUTINES } from '../utils/queries'
-
-const Home = () => {
-    const { loading, data } = useQuery(QUERY_ROUTINES)
-    const routines = data?.routines || []
-    console.log(routines)
-    return (
-        <main>
-            <div>Hello</div>
-        </main>
-    )
-}
 
 
 export default Home;

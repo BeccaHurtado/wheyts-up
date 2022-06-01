@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Routine, Exercise } = require('../models');
+const { User, Thought, Routine, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -62,74 +62,66 @@ const resolvers = {
             return { token, user };
         },
         addRoutine: async (parent, args, context) => {
-            // if (context.user) {
-            const routine = await Routine.create({ ...args, username: "becca" })//context.user.username });
+            if (context.user) {
+                const routine = await Routine.create({ ...args, username: context.user._id });
 
-            await User.findByIdAndUpdate(
-                { _id: "629049dd926412cb4622ef71" },//context.user._id },
-                { $push: { routine: routine._id } },
-                { new: true }
-            );
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { routine: routine._id } },
+                    { new: true }
+                );
 
-            return routine;
-            // }
+                return routine;
+            }
 
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
-        // { routineId, name, equipment, time, weight, sets, reps }
-        // { name: context.name, equipment: context.equipment, time: context.time, weight: context.weight, sets: context.sets, reps: context.reps }
-        // addExercise: async (parent, args, context) => {
-        //     if (context.user) {
+        addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
+            if (context.user) {
+                const exercise = await Exercise.create({ name, equipment, time, weight, sets, reps });
 
                 await Routine.findByIdAndUpdate(
-                    { _id: routineId},
-                    { $addToSet: {exercises: exercise._id} },
+                    { _id: routineId },
+                    { $addToSet: { exercises: exercise._id } },
                     { new: true }
                 ).populate("exercises");
 
-        //         const updatedRoutine = await Routine.findOneAndUpdate(
-        //             { _id: contex.routineId },
-        //             { $push: { exercise: exercise._id } },
-        //             { new: true }
-        //         );
-        //         return updatedRoutine;
-        //     }
-        // },
-        addExercise: async (parent, args, context) => {
-            const exercise = await Exercise.create({ ...args, username: "becca" }) //context.user.username });
+                return exercise;
+            }
 
-            await Routine.findByIdAndUpdate(
-                { _id: context.routineId },//context.user._id }, "629049dd926412cb4622ef71"
-                // { routineId: context.routine._id },
-                { $push: { exercise: exercise._id } },
-                { new: true }
-            );
-
-            return exercise;
+            throw new AuthenticationError('You need to be logged in!');
         },
-
-        // throw new AuthenticationError('You need to be logged in!');
-
-        deleteRoutine: async (parent, { _id }) => {
-            return Routine.findByIdAndDelete({ _id: _id })
+        deleteRoutine: async (parent, args, context) => {
+            //
         },
         editRoutine: async (parent, args, context) => {
-            // if (context.user) {
-            const routine = await Routine.findByIdAndUpdate({ _id: args._id }, { $set: args }, { new: true })// username: context.user.username });
+            if (context.user) {
+                const routine = await Routine.create({ ...args, username: context.user.username });
 
-            return routine;
-            // }
-        },
-        deleteExercise: async (parent, { _id }) => {
-            return Exercise.findOneAndDelete({ _id: _id })
-        },
-        editExercise: async (parent, Exercise, context, args) => {
-            // if (context.user) {
-            // var exercise = {_id: exercise._id}
-            const exercise = await Exercise.findByIdAndUpdate({ _id: Exercise._id }, { $set: args }, { new: true });
+                await User.findByIdAndUpdate(
+                    // { _id: context.user._id },
+                    { $push: { routine: routine._id } },
+                    { new: true }
+                );
 
-            return exercise;
-            // }
+                return routine;
+            }
+        },
+        deleteExercise: async (parent, args, context) => {
+            //
+        },
+        editExercise: async (parent, args, context) => {
+            if (context.user) {
+                const exercise = await Exercise.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    // { _id: context.user._id },
+                    { $push: { exercise: exercise._id } },
+                    { new: true }
+                );
+
+                return exercise;
+            }
 
         }
     }
