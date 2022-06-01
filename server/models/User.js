@@ -26,18 +26,18 @@ const userSchema = new Schema (
                 ref: 'Routine'
             }
         ],
-        comments: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Comment'
-            }
-        ],
-        friends: [
-            {
-                type:Schema.Types.ObjectId,
-                ref: 'User'
-            }
-        ]
+        // comments: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Comment'
+        //     }
+        // ],
+        // friends: [
+        //     {
+        //         type:Schema.Types.ObjectId,
+        //         ref: 'User'
+        //     }
+        // ]
     },
     {
         toJSON: {
