@@ -1,5 +1,4 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Schema } = require('mongoose');
 const { User, Thought, Routine, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -24,8 +23,8 @@ const resolvers = {
                 .select('-__v -password');
         },
         routines: async (parent, { userId }) => {
-            const params = username ? { username } : {};
-            return Routine.find(params).sort({ createdAt: -1 }).populate("exercise");
+            const params = userId ? { userId } : {};
+            return Routine.find(params).sort({ createdAt: -1 }).populate("exercises");
         },
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id }).populate("exercises");
@@ -64,7 +63,7 @@ const resolvers = {
         },
         addRoutine: async (parent, args, context) => {
             if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user._id });
+                const routine = await Routine.create({ ...args, username: context.user._id});
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
@@ -77,20 +76,6 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-<<<<<<< HEAD
-        addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
-            if (context.user) {
-                const exercise = await Exercise.create({ name, equipment, time, weight, sets, reps });
-
-                await Routine.findByIdAndUpdate(
-                    { _id: routineId },
-                    { $addToSet: { exercises: exercise._id } },
-                    { new: true }
-                ).populate("exercises");
-
-                return exercise;
-            }
-=======
         addExercise: async (parent, {name, equipment, time, weight, sets, reps, routineId}, context) => {
             if (context.user) {
                 const exercise = await Exercise.create({name, equipment, time, weight, sets, reps});
@@ -101,9 +86,8 @@ const resolvers = {
                     { new: true }
                 ).populate("exercises");
 
-                return updatedRoutine;
-            // }
->>>>>>> feature/apollo-server
+                return exercise;
+            }
 
             throw new AuthenticationError('You need to be logged in!');
         },

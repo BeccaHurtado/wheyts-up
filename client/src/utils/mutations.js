@@ -50,7 +50,7 @@ export const ADD_ROUTINE = gql`
 `;
 
 export const EDIT_ROUTINE = gql`
-  mutation editRoutine($routineName: String!, $id: ID!, $workouttype: String!, $exercises: exerciseInput!) {
+  mutation editRoutine($routineName: String!, $id: ID!, $workoutType: String!, $exercises: exerciseInput!) {
     editRoutine(routineName: $routineName, _id: $id, workoutType: $workoutType, exercises: $exercises) {
       _id
       routineName
