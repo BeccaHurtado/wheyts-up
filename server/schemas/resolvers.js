@@ -22,11 +22,10 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__v -password');
         },
-
         routines: async (parent) => {
             // const params = userId ? { userId } : {};
-            return Routine.find().sort({ createdAt: -1 }).populate("exercises")
-
+            // return Routine.find().sort({ createdAt: -1 }).populate("exercises")
+            return Routine.find().sort({ createdAt: -1 }).populate("username").populate("exercises")
         },
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id }).populate("exercises");
@@ -65,7 +64,7 @@ const resolvers = {
         },
         addRoutine: async (parent, args, context) => {
             if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user._id});
+                const routine = await Routine.create({ ...args, username: context.user._id });
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
@@ -78,13 +77,13 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        addExercise: async (parent, {name, equipment, time, weight, sets, reps, routineId}, context) => {
+        addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
             if (context.user) {
-                const exercise = await Exercise.create({name, equipment, time, weight, sets, reps});
+                const exercise = await Exercise.create({ name, equipment, time, weight, sets, reps });
 
                 await Routine.findByIdAndUpdate(
-                    { _id: routineId},
-                    { $addToSet: {exercises: exercise._id} },
+                    { _id: routineId },
+                    { $addToSet: { exercises: exercise._id } },
                     { new: true }
                 ).populate("exercises");
 

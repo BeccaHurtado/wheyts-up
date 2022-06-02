@@ -6,7 +6,10 @@ export const QUERY_ROUTINES = gql`
         _id
         routineName
         workoutType
-        username
+        username {
+            _id
+            username
+        }
         exercises {
             _id
             name
