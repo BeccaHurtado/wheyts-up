@@ -6,7 +6,10 @@ export const QUERY_ROUTINES = gql`
         _id
         routineName
         workoutType
-        username
+        username {
+            _id
+            username
+        }
         exercises {
             _id
             name
@@ -20,12 +23,4 @@ export const QUERY_ROUTINES = gql`
     }
  }
     
-HEAD
 `;
-
- HEAD
-`;
-
-`;
-c024d473a023b3d9a29ad742f2e126385c450abf
- feature/apollo-server

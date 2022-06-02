@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const RoutineList = ({ routines, title}) => {
+const RoutineList = ({ routines, title }) => {
     if (!routines.length) {
         return <h3>Create a routine!</h3>
     }
@@ -12,9 +12,9 @@ const RoutineList = ({ routines, title}) => {
                 <div key={routine._id}>
                     <p>
                         <Link
-                            to={`/profile/${routine.username}`}
+                            to={`/profile/${routine.username.username}`}
                         >
-                            {routine.username}
+                            {routine.username.username}
                         </Link>
                         {routine.createdAt}
                     </p>
