@@ -10,11 +10,6 @@ export const QUERY_ROUTINES = gql`
         exercises {
             _id
             name
-            equipment
-            time
-            weight
-            sets
-            reps
         }
         createdAt
     }

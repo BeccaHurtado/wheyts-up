@@ -37,6 +37,7 @@ type Query {
     exercises(routineId: ID): [Exercise]
     exercise(_id: ID!): Exercise
 }
+
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
