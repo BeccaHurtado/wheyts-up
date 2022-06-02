@@ -24,9 +24,7 @@ const resolvers = {
         },
         routines: async (parent) => {
             // const params = userId ? { userId } : {};
-            const records = await Routine.find().sort({ createdAt: -1 }).populate("exercises")
-            console.log("test")
-            return records
+            return Routine.find().sort({ createdAt: -1 }).populate("exercises")
         },
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id }).populate("exercises");
