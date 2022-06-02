@@ -12,34 +12,6 @@ const exerciseSchema = new Schema(
             type: String
         },
         time: {
-<<<<<<< HEAD
-            type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-
-            // }
-        },
-        weight: {
-            type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-
-            // }
-        },
-        sets: {
-            type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-
-            // }
-        },
-        reps: {
-            type: Number,
-            // validate: {
-            //     validator: Number.isInteger,
-
-            // }
-=======
             type: Number,   
         },
         weight: {
@@ -50,7 +22,6 @@ const exerciseSchema = new Schema(
         },
         reps: {
             type: Number,
->>>>>>> feature/apollo-server
         }
     },
     {
