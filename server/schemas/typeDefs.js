@@ -11,7 +11,7 @@ type Routine {
     _id: ID
     routineName: String
     workoutType: String
-    
+    username: String
     exercises: [Exercise]
     createdAt: String
 }
