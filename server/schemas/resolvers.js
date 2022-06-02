@@ -22,9 +22,11 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__v -password');
         },
-        routines: async (parent, { userId }) => {
-            const params = userId ? { userId } : {};
-            return Routine.find(params).sort({ createdAt: -1 }).populate("exercises")
+        routines: async (parent) => {
+            // const params = userId ? { userId } : {};
+            const records = await Routine.find().sort({ createdAt: -1 }).populate("exercises")
+            console.log("test")
+            return records
         },
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id }).populate("exercises");

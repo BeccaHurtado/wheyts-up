@@ -11,7 +11,7 @@ type Routine {
     _id: ID
     routineName: String
     workoutType: String
-    userId: ID
+    
     exercises: [Exercise]
     createdAt: String
 }
@@ -32,7 +32,7 @@ type Query {
     me: User
     users: [User]
     user(username: String!): User
-    routines(userId: ID!): [Routine]
+    routines: [Routine]
     routine(_id: ID!): Routine
     exercises(routineId: ID): [Exercise]
     exercise(_id: ID!): Exercise
