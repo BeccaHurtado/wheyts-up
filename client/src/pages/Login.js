@@ -20,6 +20,7 @@ const Login = (props) => {
         });
     };
 
+    // check credentials on submit
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
@@ -41,22 +42,14 @@ const Login = (props) => {
     };
 
     return (
-        <Box>
+        <Box
+            component="form"
+            aria-label='Login'>
             <FormControl className='Form'>
                 <br></br>
-                {/* <FormControl>
-                <TextField
-                    id="username-text"
-                    label="Username"
-                    value={username}
-                    onChange={handleChange}
-                />
-            </FormControl>
-
-            <br></br> */}
 
                 <TextField
-                    id="email-text"
+                    id="email"
                     label="Email"
                     value={formState.email}
                     onChange={handleChange}
@@ -65,7 +58,7 @@ const Login = (props) => {
                 <br></br>
 
                 <TextField
-                    id="password-text"
+                    id="password"
                     label="Password"
                     value={formState.password}
                     onChange={handleChange}
@@ -79,6 +72,6 @@ const Login = (props) => {
         </Box>
 
     );
-}
+};
 
 export default Login;
