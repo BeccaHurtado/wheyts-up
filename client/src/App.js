@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import RoutineForm from './components/RoutineForm';
 // import RoutineList from './components/RoutineList';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <div>
           <Header />
+          <RoutineForm />
           <Routes>
             <Route
               path="/"
