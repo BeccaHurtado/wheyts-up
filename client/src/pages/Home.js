@@ -21,30 +21,6 @@ function Home() {
     return (
         <main>
             <div>
-                <Button
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                >
-                    Dashboard
-                </Button>
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                    }}
-                >
-                    <MenuItem onClick={handleClose}>Login</MenuItem>
-                    <MenuItem onClick={handleClose}>Signup</MenuItem>
-                    {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-                </Menu>
-            </div>
-            <div>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (

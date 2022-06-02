@@ -12,9 +12,9 @@ const RoutineList = ({ routines, title}) => {
                 <div key={routine._id}>
                     <p>
                         <Link
-                            to={`/profile/${routine.username}`}
+                            to={`/profile/${routine.username.username}`}
                         >
-                            {routine.username}
+                            {routine.username.username}
                         </Link>
                         {routine.createdAt}
                     </p>
