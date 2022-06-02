@@ -12,6 +12,7 @@ const exerciseSchema = new Schema(
             type: String
         },
         time: {
+<<<<<<< HEAD
             type: Number,
             // validate: {
             //     validator: Number.isInteger,
@@ -38,6 +39,18 @@ const exerciseSchema = new Schema(
             //     validator: Number.isInteger,
 
             // }
+=======
+            type: Number,   
+        },
+        weight: {
+            type: Number,
+        },
+        sets: {
+            type: Number,
+        },
+        reps: {
+            type: Number,
+>>>>>>> feature/apollo-server
         }
     },
     {
