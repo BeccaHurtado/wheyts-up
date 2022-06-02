@@ -23,8 +23,6 @@ const resolvers = {
                 .select('-__v -password');
         },
         routines: async (parent) => {
-            // const params = userId ? { userId } : {};
-            // return Routine.find().sort({ createdAt: -1 }).populate("exercises")
             return Routine.find().sort({ createdAt: -1 }).populate("username").populate("exercises")
         },
         routine: async (parent, { _id }) => {
