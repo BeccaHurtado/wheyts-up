@@ -53,6 +53,7 @@ type Query {
     exercises(routineId: ID): [Exercise]
     exercise(_id: ID!): Exercise
 }
+<<<<<<< HEAD
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
@@ -60,6 +61,18 @@ type Mutation {
     deleteRoutine(routineName: String!): User
     editRoutine(routineName: String!, workoutType: String!, username: String!, exercises: String!): Routine
     addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId:ID): Exercise
+=======
+
+
+
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addRoutine(routineName: String!, workoutType: String!, userId: ID!): Routine
+    deleteRoutine(_id: ID!): User
+    editRoutine(routineName: String!, _id: ID!, workoutType: String!): Routine
+    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId: ID!): Exercise
+>>>>>>> feature/apollo-server
     deleteExercise(name: String!): User
     editExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!): Exercise
 }

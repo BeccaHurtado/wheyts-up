@@ -38,6 +38,13 @@ export const ADD_ROUTINE = gql`
         weight
         sets
         reps
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      }
+=======
+>>>>>>> c024d473a023b3d9a29ad742f2e126385c450abf
+>>>>>>> feature/apollo-server
     }
   }
 `;
@@ -113,4 +120,12 @@ export const DELETE_ROUTINE = gql`
 //       }
 //     }
 //   }
+<<<<<<< HEAD
 // `;
+=======
+<<<<<<< HEAD
+// `;
+=======
+// `;
+>>>>>>> c024d473a023b3d9a29ad742f2e126385c450abf
+>>>>>>> feature/apollo-server
