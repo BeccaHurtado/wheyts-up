@@ -1,42 +1,84 @@
 import React, { useState } from 'react';
-// import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
 
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 
-import { FormControl, InputLabel, Input, FormHelperText, Button } from '@mui/material';
+import { FormControl, Button, TextField, Box } from '@mui/material';
 
-const login = (props) => {
+const Login = (props) => {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN);
+
+    // update state based on form input changes
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const { data } = await login({
+                variables: { ...formState },
+            });
+
+            Auth.login(data.login.token);
+        } catch (e) {
+            console.error(e);
+        }
+
+        // clear form values
+        setFormState({
+            email: '',
+            password: '',
+        });
+    };
+
     return (
-        <FormControl className='Form'>
-            <FormControl>
-                <InputLabel htmlFor="my-input">Username</InputLabel>
-                <Input id="my-input" aria-describedby="my-helper-text" />
-                <FormHelperText id="my-helper-text">Please enter your username above.</FormHelperText>
+        <Box>
+            <FormControl className='Form'>
+                <br></br>
+                {/* <FormControl>
+                <TextField
+                    id="username-text"
+                    label="Username"
+                    value={username}
+                    onChange={handleChange}
+                />
             </FormControl>
 
-            <br></br>
+            <br></br> */}
 
-            <FormControl>
-                <InputLabel htmlFor="my-input">Email address</InputLabel>
-                <Input id="my-input" aria-describedby="my-helper-text" />
-                <FormHelperText id="my-helper-text">Please enter your email above.</FormHelperText>
+                <TextField
+                    id="email-text"
+                    label="Email"
+                    value={formState.email}
+                    onChange={handleChange}
+                />
+
+                <br></br>
+
+                <TextField
+                    id="password-text"
+                    label="Password"
+                    value={formState.password}
+                    onChange={handleChange}
+                />
+
+                <br></br>
+
+                <Button variant="outlined" onSubmit={handleFormSubmit}>Submit</Button>
             </FormControl>
-
-            <br></br>
-
-            <FormControl>
-                <InputLabel htmlFor="my-input">Password</InputLabel>
-                <Input id="my-input" aria-describedby="my-helper-text" />
-                <FormHelperText id="my-helper-text">Please enter your Password above.</FormHelperText>
-            </FormControl>
-
-            <br></br>
-
-            <Button variant="outlined">Submit</Button>
-        </FormControl>
+            {error && <div>Login failed</div>}
+        </Box>
 
     );
 }
 
-export default login;
+export default Login;
