@@ -3,15 +3,14 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Home from './pages/Home'
-import Profile from './pages/Profile'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RoutineForm from './components/RoutineForm';
 // import RoutineList from './components/RoutineList';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -28,14 +27,12 @@ function App() {
       mode: 'dark',
     },
   });
-
   return (
     <ThemeProvider theme={darkTheme}>
     <ApolloProvider client={client}>
       <Router>
         <div>
           <Header />
-          <RoutineForm />
           <Routes>
             <Route
               path="/"
@@ -53,10 +50,6 @@ function App() {
               path="/signup"
               element={<Signup />}
             />
-            {/* <Route
-              path="/profile"
-              element={<Profile />}
-            /> */}
           </Routes>
           <Footer />
         </div>
