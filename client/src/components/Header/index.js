@@ -18,8 +18,8 @@ import { grey } from "@mui/material/colors"
 // sx={{ bgcolor: grey[500] }}
 
 
-const pages = [];
-const settings = ['Profile', 'Logout'];
+const pages = ['Login', 'signup', 'Profile'];
+// const settings = ['Profile', 'Logout'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -129,7 +129,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link style={{textDecoration: "none", color: "white"}} to={`/`}>
+                <Link style={{textDecoration: "none", color: "white"}} to={`/${page}`}>
                       {page}
                 </Link>
               </Button>
@@ -142,7 +142,7 @@ const ResponsiveAppBar = () => {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu
+            {/* <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -163,7 +163,7 @@ const ResponsiveAppBar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

@@ -9,28 +9,11 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Box, Rating } from '@mui/material'
-import WorkIcon from '@mui/icons-material/Work'
-import StarIcon from '@mui/icons-material/Star'
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
 
-const labels = {
-    0.5: 'Useless',
-    1: 'Useless+',
-    1.5: 'Poor',
-    2: 'Poor+',
-    2.5: 'Ok',
-    3: 'Ok+',
-    3.5: 'Good',
-    4: 'Good+',
-    4.5: 'Excellent',
-    5: 'Excellent+',
-};
 
-function getLabelText(value) {
-    return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
-}
-
-const RoutineList = ({ routines, title }) => {
+const RoutineList = ({ routines, title, length }) => {
  
     if (!routines.length) {
         return <h3>Create a routine!</h3>
@@ -60,10 +43,12 @@ const RoutineList = ({ routines, title }) => {
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
-                                    <WorkIcon />
+                                    <FitnessCenterIcon />
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={routine.routineName} secondary={routine.createdAt} className="listName" />
+                        </ListItem>
+                        <ListItem>
                         <Typography className="username" component="legend">Rating</Typography>
                         <Rating
                             name="rating-id"
