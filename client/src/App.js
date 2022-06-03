@@ -1,4 +1,5 @@
 // import logo from './logo.svg';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Home from './pages/Home'
@@ -21,7 +22,13 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
   return (
+    <ThemeProvider theme={darkTheme}>
     <ApolloProvider client={client}>
       <Router>
         <div>
@@ -32,6 +39,10 @@ function App() {
               element={<Home />}
             />
             <Route
+              path="/profile"
+              element={<Profile />}
+            />
+            <Route
               path="/login"
               element={<Login />}
             />
@@ -39,16 +50,13 @@ function App() {
               path="/signup"
               element={<Signup />}
             />
-            {/* <Route
-              path="/profile"
-              element={<Profile />}
-            /> */}
           </Routes>
           <Footer />
         </div>
       </Router>
 
     </ApolloProvider>
+    </ThemeProvider>
   );
 }
 
