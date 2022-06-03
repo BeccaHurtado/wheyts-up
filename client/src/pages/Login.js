@@ -1,12 +1,14 @@
+// import React from 'react';
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-import { FormControl, Button, TextField, Box } from '@mui/material';
+import { FormControl, Button, TextField, } from '@mui/material';
 
 const Login = (props) => {
+
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error }] = useMutation(LOGIN);
 
@@ -18,6 +20,7 @@ const Login = (props) => {
             ...formState,
             [name]: value,
         });
+        console.log("handle change")
     };
 
     // check credentials on submit
@@ -30,8 +33,8 @@ const Login = (props) => {
             });
 
             Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
+        } catch (err) {
+            console.error(err);
         }
 
         // clear form values
@@ -42,34 +45,30 @@ const Login = (props) => {
     };
 
     return (
-        <Box
-            component="form"
-            aria-label='Login'>
-            <FormControl className='Form'>
-                <br></br>
+        <FormControl className='Form' onSubmit={handleFormSubmit}>
 
-                <TextField
-                    id="email"
-                    label="Email"
-                    value={formState.email}
-                    onChange={handleChange}
-                />
 
-                <br></br>
+            <TextField
+                id="email"
+                label="Email"
+                value={formState.email} //formState.email
+                onChange={handleChange}
+            />
 
-                <TextField
-                    id="password"
-                    label="Password"
-                    value={formState.password}
-                    onChange={handleChange}
-                />
+            <br></br>
 
-                <br></br>
+            <TextField
+                id="password"
+                label="Password"
+                value={formState.password} //formState.password
+                onChange={handleChange}
+            />
 
-                <Button variant="outlined" onSubmit={handleFormSubmit}>Submit</Button>
-            </FormControl>
+            <br></br>
+
+            <Button variant="outlined" >Submit</Button>
             {error && <div>Login failed</div>}
-        </Box>
+        </FormControl>
 
     );
 };

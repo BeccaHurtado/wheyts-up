@@ -6,6 +6,7 @@ export const QUERY_ROUTINES = gql`
         _id
         routineName
         workoutType
+        createdAt
         username {
             _id
             username
@@ -19,8 +20,6 @@ export const QUERY_ROUTINES = gql`
             sets
             reps
         }
-        createdAt
     }
  }
-    
 `;
