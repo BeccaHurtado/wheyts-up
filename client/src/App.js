@@ -12,7 +12,6 @@ import RoutineForm from './components/RoutineForm';
 // import RoutineList from './components/RoutineList';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
