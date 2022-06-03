@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
+const { Exercise } = require('.');
 const dateFormat = require('../utils/dateFormat')
 
 const routineSchema = new Schema(
@@ -15,12 +16,10 @@ const routineSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        exercises: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Exercise'
-            }
-        ],
+        exercises: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Exercise'
+        }],
         createdAt: {
             type: Date,
             default: Date.now,

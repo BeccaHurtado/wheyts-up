@@ -20,7 +20,7 @@ const resolvers = {
         },
         user: async (parent, { username }) => {
             return User.findOne({ username })
-                .select('-__v -password');
+                .select('-__v -password').populate("routines").populate("exercises")
         },
         routines: async (parent) => {
             return Routine.find().sort({ createdAt: -1 }).populate("username").populate("exercises")
@@ -28,9 +28,9 @@ const resolvers = {
         routine: async (parent, { _id }) => {
             return Routine.findOne({ _id }).populate("exercises");
         },
-        exercises: async (parent, { routineId }) => {
+        exercises: async (parent, {routineId}) => {
             const params = routineId ? { routineId } : {};
-            return Exercise.find(params).sort({ createdAt: -1 }).populate("exercises");
+            return Exercise.find().sort({ createdAt: -1 })
         },
         exercise: async (parent, { _id }) => {
             return Exercise.findOne({ _id });

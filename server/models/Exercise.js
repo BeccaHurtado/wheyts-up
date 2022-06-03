@@ -13,16 +13,37 @@ const exerciseSchema = new Schema(
         },
         time: {
             type: Number,
+            // validate: {
+            //     validator: Number.isInteger,
+
+            // }
         },
         weight: {
             type: Number,
+            // validate: {
+            //     validator: Number.isInteger,
+
+            // }
         },
         sets: {
             type: Number,
+            // validate: {
+            //     validator: Number.isInteger,
+
+            // }
         },
         reps: {
             type: Number,
-        }
+            // validate: {
+            //     validator: Number.isInteger,
+
+            // }
+        },
+        routine: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Routine'
+        }]
+        
     },
     {
         toJSON: {

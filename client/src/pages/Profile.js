@@ -3,10 +3,10 @@ import { Navigate, useParams } from 'react-router-dom';
 
 // import ThoughtForm from '../components/ThoughtForm';
 import RoutineList from '../components/RoutineList';
-
+import ExerciseList from '../components/ExerciseList'
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import {QUERY_ME, QUERY_USER } from '../utils/queries';
 // import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 

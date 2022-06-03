@@ -19,6 +19,20 @@ export const QUERY_ROUTINES = gql`
  }  
 `;
 
+export const QUERY_EXERCISES = gql `
+query exercises {
+    exercises {
+        _id: ID
+        name: String
+        equipment: String
+        time: Int
+        weight: Int
+        sets: Int
+        reps: Int 
+    }
+}
+`
+
 export const QUERY_USER = gql`
 query user($username: String!) {
     user(username: $username) {
