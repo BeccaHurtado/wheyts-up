@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 // import RoutineList from './components/RoutineList';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -46,6 +47,10 @@ function App() {
               path="/signup"
               element={<Signup />}
             />
+            {/* <Route
+              path="/profile"
+              element={<Profile />}
+            /> */}
           </Routes>
           <Footer />
         </div>

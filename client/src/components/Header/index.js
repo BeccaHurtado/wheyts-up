@@ -1,3 +1,98 @@
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import { Menu, MenuItem, Button } from "@mui/material";
+// // import { useQuery } from '@apollo/client'
+// // import { QUERY_ROUTINES } from '../utils/queries'
+
+// import Auth from "../../utils/auth";
+
+// const Header = () => {
+//   const [anchorEl, setAnchorEl] = React.useState(null);
+//   const open = Boolean(anchorEl);
+//   const handleClick = (event) => {
+//     setAnchorEl(event.currentTarget);
+//   };
+//   const handleClose = () => {
+//     setAnchorEl(null);
+//     logout();
+//   };
+
+//   const logout = (event) => {
+//     event.preventDefault();
+//     Auth.logout();
+//   };
+
+//   return (
+//     <header className="bg-secondary mb-4 py-2 flex-row align-center">
+//       <div className="container flex-row justify-space-between-lg justify-center align-center">
+//         <Link to="/">{/* <h1>Wheyts Up</h1> */}</Link>
+
+//         <nav className="text-center">
+//           {Auth.loggedIn() ? (
+//             <div>
+//               {/* <Link to="/profile">My Routines</Link> */}
+//               <Button
+//                 id="basic-button"
+//                 aria-controls={open ? "basic-menu" : undefined}
+//                 aria-haspopup="true"
+//                 aria-expanded={open ? "true" : undefined}
+//                 onClick={handleClick}
+//               >
+//                 Dashboard
+//               </Button>
+//               <Menu
+//                 id="basic-menu"
+//                 anchorEl={anchorEl}
+//                 open={open}
+//                 onClose={handleClose}
+//                 MenuListProps={{
+//                   "aria-labelledby": "basic-button",
+//                 }}
+//               >
+//                 <MenuItem onClick={handleClose}>Profile</MenuItem>
+//                 <MenuItem onClick={logout}>Logout</MenuItem>
+//                 {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+//               </Menu>
+//               {/* <a href="/" onClick={logout}>
+//                                 Logout
+//                             </a> */}
+//             </div>
+//           ) : (
+//             <div>
+//               <Button
+//                 id="basic-button"
+//                 aria-controls={open ? "basic-menu" : undefined}
+//                 aria-haspopup="true"
+//                 aria-expanded={open ? "true" : undefined}
+//                 onClick={handleClick}
+//               >
+//                 Dashboard
+//               </Button>
+//               <Menu
+//                 id="basic-menu"
+//                 anchorEl={anchorEl}
+//                 open={open}
+//                 onClose={handleClose}
+//                 MenuListProps={{
+//                   "aria-labelledby": "basic-button",
+//                 }}
+//               >
+//                 <MenuItem onClick={handleClose}><Link to="/login">Login</Link></MenuItem>
+//                 <MenuItem onClick={handleClose}><Link to="/signup">Signup</Link></MenuItem>
+//               </Menu>
+//               {/* <Link to="/login">Login</Link>
+//                             <Link to="/signup">Signup</Link> */}
+//             </div>
+//           )}
+//         </nav>
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default Header;
+
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,8 +112,10 @@ import { grey } from "@mui/material/colors"
 // const navGrey = grey[500]
 // sx={{ bgcolor: grey[500] }}
 
+import Auth from "../../utils/auth"
 
-const pages = [];
+
+const pages = ['login', 'signup'];
 const settings = ['Profile', 'Logout'];
 
 const ResponsiveAppBar = () => {
@@ -129,7 +226,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link style={{textDecoration: "none", color: "white"}} to={`/`}>
+                <Link style={{textDecoration: "none", color: "white"}} to={`/${page}`}>
                       {page}
                 </Link>
               </Button>
@@ -137,11 +234,12 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+          {Auth.loggedIn() ? (
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
-            </Tooltip>
+            </Tooltip>) : ('')}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
