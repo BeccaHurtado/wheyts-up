@@ -10,7 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Box, Rating } from '@mui/material'
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-
+import ExerciseList from '../ExerciseList';
 
 
 const RoutineList = ({ routines, title, length }) => {
@@ -47,6 +47,7 @@ const RoutineList = ({ routines, title, length }) => {
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={routine.routineName} secondary={routine.createdAt} className="listName" />
+                            <ListItemText primary={routine.name} secondary={routine.createdAt} className="listName" />
                         </ListItem>
                         <ListItem>
                         <Typography className="username" component="legend">Rating</Typography>

@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 
 // import Auth from '../utils/auth';
 
-import { FormControl, InputLabel, Input, FormHelperText, Button } from '@mui/material';
+import { FormControl, InputLabel, Input, FormHelperText, Button, Paper } from '@mui/material';
 
 const login = (props) => {
     return (
+        <Paper bgcolor="background.paper">
         <FormControl className='Form'>
             <FormControl>
                 <InputLabel htmlFor="my-input">Username</InputLabel>
@@ -35,6 +36,7 @@ const login = (props) => {
 
             <Button variant="outlined">Submit</Button>
         </FormControl>
+        </Paper>
 
     );
 }

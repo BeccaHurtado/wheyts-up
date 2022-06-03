@@ -38,7 +38,12 @@ const exerciseSchema = new Schema(
             //     validator: Number.isInteger,
 
             // }
-        }
+        },
+        routine: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Routine'
+        }]
+        
     },
     {
         toJSON: {

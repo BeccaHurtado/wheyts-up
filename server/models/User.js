@@ -20,10 +20,16 @@ const userSchema = new Schema (
             required: true,
             minlength: 8
         },
-        routine: [
+        routines: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Routine'
+            }
+        ],
+        exercises: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Exercise'
             }
         ]
     },
