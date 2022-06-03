@@ -1,0 +1,12 @@
+.listName, .username {
+    color: white
+}
+
+.listContainer {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.title {
+    padding-top: 30px;
+}

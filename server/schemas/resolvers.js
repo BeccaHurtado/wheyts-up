@@ -30,7 +30,7 @@ const resolvers = {
         },
         exercises: async (parent, { routineId }) => {
             const params = routineId ? { routineId } : {};
-            return Exercise.find(params).sort({ createdAt: -1 });
+            return Exercise.find(params).sort({ createdAt: -1 }).populate("exercises");
         },
         exercise: async (parent, { _id }) => {
             return Exercise.findOne({ _id });
