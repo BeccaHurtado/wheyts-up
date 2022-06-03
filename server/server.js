@@ -6,7 +6,7 @@ const path = require('path')
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas')
-const {authMiddleware} = require('./utils/auth')
+const { authMiddleware } = require('./utils/auth')
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -36,13 +36,13 @@ const startApolloServer = async (typeDefs, resolvers) => {
   }
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'))
+    res.sendFile(path.join(__dirname, '../client/build/App.js'))
   })
 
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      
+
       // log where we can go to test our GQL API
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`)
     });
