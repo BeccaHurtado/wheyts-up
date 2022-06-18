@@ -1,10 +1,12 @@
-.listName, .username {
+.listName, .username, .text-color {
     color: white
 }
 
 .listContainer {
     padding-top: 30px;
     padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .title {

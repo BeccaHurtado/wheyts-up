@@ -12,18 +12,24 @@ type Routine {
     routineName: String
     workoutType: String
     username: User
-    exercises: [Exercise]
+    exercise1: String
+    set1: Int
+    rep1: Int
+    exercise2: String
+    set2: Int
+    rep2: Int
+    exercise3: String
+    set3: Int
+    rep3: Int
+    exercise4: String
+    set4: Int
+    rep4: Int
+    exercise5: String
+    set5: Int
+    rep5: Int
     createdAt: String
 }
-type Exercise {
-    _id: ID
-    name: String
-    equipment: String
-    time: Int
-    weight: Int
-    sets: Int
-    reps: Int
-}
+
 type Auth {
     token: ID!
     user: User
@@ -34,20 +40,18 @@ type Query {
     user(username: String!): User
     routines: [Routine]
     routine(_id: ID!): Routine
-    exercises(routineId: ID): [Exercise]
-    exercise(_id: ID!): Exercise
 }
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addRoutine(routineName: String!, workoutType: String!): Routine
+    addRoutine(routineName: String!, workoutType: String!, exercise1: String!, set1: Int!, rep1: Int!, exercise2: String!, set2: Int!, rep2: Int!, exercise3: String!, set3: Int!, rep3: Int!, exercise4: String!, set4: Int!, rep4: Int!, exercise5: String!, set5: Int!, rep5: Int!): Routine
     deleteRoutine(_id: ID!): Routine
-    editRoutine(routineName: String!, workoutType: String!, _id: ID!): Routine
-    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId:ID): Exercise
-    deleteExercise(_id: ID!): Exercise
-    editExercise(_id: ID!, name: String!): Exercise
+    editRoutine(_id: ID!, exercise1: String!, set1: Int!, rep1: Int!, exercise2: String!, set2: Int!, rep2: Int!, exercise3: String!, set3: Int!, rep3: Int!, exercise4: String!, set4: Int!, rep4: Int!, exercise5: String!, set5: Int!, rep5: Int!): Routine
 }
 `;
 
-// export the typeDefs
 module.exports = typeDefs;
+// addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId:ID): Exercise
+// deleteExercise(_id: ID!): Exercise
+// editExercise(_id: ID!, name: String!): Exercise
+// export the typeDefs

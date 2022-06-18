@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
+import background from "./images/pattern-wallpaper.jpg"
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -28,6 +29,7 @@ function App() {
     },
   });
   return (
+    <div style={{ backgroundImage: `url(${background})` }}>
     <ThemeProvider theme={darkTheme}>
     <ApolloProvider client={client}>
       <Router>
@@ -57,6 +59,7 @@ function App() {
 
     </ApolloProvider>
     </ThemeProvider>
+    </div>
   );
 }
 

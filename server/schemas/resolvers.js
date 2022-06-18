@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Routine, Exercise } = require('../models');
+const { User, Routine} = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -23,18 +23,18 @@ const resolvers = {
                 .select('-__v -password');
         },
         routines: async (parent) => {
-            return Routine.find().sort({ createdAt: -1 }).populate("username").populate("exercises")
+            return Routine.find().sort({ createdAt: -1 }).populate("username")
         },
         routine: async (parent, { _id }) => {
-            return Routine.findOne({ _id }).populate("exercises");
+            return Routine.findOne({ _id })
         },
-        exercises: async (parent, { routineId }) => {
-            const params = routineId ? { routineId } : {};
-            return Exercise.find(params).sort({ createdAt: -1 });
-        },
-        exercise: async (parent, { _id }) => {
-            return Exercise.findOne({ _id });
-        }
+        // exercises: async (parent, { routineId }) => {
+        //     const params = routineId ? { routineId } : {};
+        //     return Exercise.find(params).sort({ createdAt: -1 });
+        // },
+        // exercise: async (parent, { _id }) => {
+        //     return Exercise.findOne({ _id });
+        // }
     },
 
     Mutation: {
@@ -75,21 +75,21 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
-            if (context.user) {
-                const exercise = await Exercise.create({ name, equipment, time, weight, sets, reps });
+        // addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
+        //     if (context.user) {
+        //         const exercise = await Exercise.create({ name, equipment, time, weight, sets, reps });
 
-                await Routine.findByIdAndUpdate(
-                    { _id: routineId },
-                    { $addToSet: { exercises: exercise._id } },
-                    { new: true }
-                ).populate("exercises");
+        //         await Routine.findByIdAndUpdate(
+        //             { _id: routineId },
+        //             { $addToSet: { exercises: exercise._id } },
+        //             { new: true }
+        //         ).populate("exercises");
 
-                return exercise;
-            }
+        //         return exercise;
+        //     }
 
-            throw new AuthenticationError('You need to be logged in!');
-        },
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
         deleteRoutine: async (parent, {_id}) => {
             return Routine.findByIdAndDelete({_id: _id})
         },
@@ -100,17 +100,17 @@ const resolvers = {
                 return routine;
             }
         },
-        deleteExercise: async (parent, {_id }) => {
-            return Exercise.findOneAndDelete({ _id: _id})
-        },
-        editExercise: async (parent, args, context) => {
-            if (context.user) {
-                const exercise = await Exercise.findByIdAndUpdate({ _id: args._id }, {$set:args}, {new: true});
+        // deleteExercise: async (parent, {_id }) => {
+        //     return Exercise.findOneAndDelete({ _id: _id})
+        // },
+        // editExercise: async (parent, args, context) => {
+        //     if (context.user) {
+        //         const exercise = await Exercise.findByIdAndUpdate({ _id: args._id }, {$set:args}, {new: true});
 
-                return exercise;
-            }
+        //         return exercise;
+        //     }
 
-        }
+        // }
     }
 };
 
