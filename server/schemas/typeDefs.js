@@ -47,16 +47,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addRoutine(routineName: String!, workoutType: String!, exercise1: String!, set1: Int!, rep1: Int!, exercise2: String!, set2: Int!, rep2: Int!, exercise3: String!, set3: Int!, rep3: Int!, exercise4: String!, set4: Int!, rep4: Int!, exercise5: String!, set5: Int!, rep5: Int!): Routine
     deleteRoutine(_id: ID!): Routine
-<<<<<<< HEAD
     editRoutine(_id: ID!, exercise1: String!, set1: Int!, rep1: Int!, exercise2: String!, set2: Int!, rep2: Int!, exercise3: String!, set3: Int!, rep3: Int!, exercise4: String!, set4: Int!, rep4: Int!, exercise5: String!, set5: Int!, rep5: Int!): Routine
-=======
-    editRoutine(routineName: String!, workoutType: String!, _id: ID!): Routine
-    addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId:ID): Exercise
-
-    deleteExercise(_id: ID!): Exercise
-    editExercise(_id: ID!, name: String!): Exercise
-
->>>>>>> ce1cf69b27ada1e89ce27a678b96ec35cb72cb6b
 }
 `;
 

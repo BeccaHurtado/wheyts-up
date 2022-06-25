@@ -75,7 +75,6 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-<<<<<<< HEAD
         // addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
         //     if (context.user) {
         //         const exercise = await Exercise.create({ name, equipment, time, weight, sets, reps });
@@ -85,17 +84,6 @@ const resolvers = {
         //             { $addToSet: { exercises: exercise._id } },
         //             { new: true }
         //         ).populate("exercises");
-=======
-        addExercise: async (parent, {name, equipment, time, weight, sets, reps, routineId}, context) => {
-            if (context.user) {
-                const exercise = await Exercise.create({name, equipment, time, weight, sets, reps});
-
-                await Routine.findByIdAndUpdate(
-                    { _id: routineId},
-                    { $addToSet: {exercises: exercise._id} },
-                    { new: true }
-                ).populate("exercises");
->>>>>>> ce1cf69b27ada1e89ce27a678b96ec35cb72cb6b
 
         //         return exercise;
         //     }
