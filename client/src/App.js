@@ -29,7 +29,13 @@ function App() {
     },
   });
   return (
-    <div style={{ backgroundImage: `url(${background})` }}>
+    <div style={{
+      backgroundImage: `url(${background})`,
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover"
+
+    }}>
     <ThemeProvider theme={darkTheme}>
     <ApolloProvider client={client}>
       <Router>

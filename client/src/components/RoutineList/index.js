@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './routine.css'
+import Divider from '@mui/material/Divider'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -23,7 +24,7 @@ const RoutineList = ({ routines, title, length }) => {
             <div className="listContainer">
 
                 {routines && routines.map(routine => (
-                    <List sx={{ bgcolor: 'background.paper' }} key={routine._id}>
+                    <List sx={{ bgcolor: 'background.paper' }} key={routine._id} className="lists">
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
@@ -34,35 +35,41 @@ const RoutineList = ({ routines, title, length }) => {
                         </ListItem>
 
                         <ListItem>
-                            <ListItemText className="text-color">
+                            <ListItemText className="text-color" variant="h1">
                                 {routine.exercise1}
                             </ListItemText>
                         </ListItem>
+                        <ListItem>
+                            <ListItemText className="text-color">
+                                {routine.set1} x {routine.rep1}
+                            </ListItemText>
+                        </ListItem>
 
+                        <Divider variant="middle" component="li" />
                         <ListItem>
                             <ListItemText className="text-color">
                                 {routine.exercise2}
                             </ListItemText>
                         </ListItem>
-
+                        <Divider variant="middle" component="li" />
                         <ListItem>
                             <ListItemText className="text-color">
                                 {routine.exercise3}
                             </ListItemText>
                         </ListItem>
-
+                        <Divider variant="middle" component="li" />
                         <ListItem>
                             <ListItemText className="text-color">
                                 {routine.exercise4}
                             </ListItemText>
                         </ListItem>
-
+                        <Divider variant="middle" component="li" />
                         <ListItem>
                             <ListItemText className="text-color">
                                 {routine.exercise5}
                             </ListItemText>
                         </ListItem>
-
+                        <Divider variant="middle" component="li" />
                         <ListItem>
                         <Typography className="username" component="legend">Rating</Typography>
                         <Rating
