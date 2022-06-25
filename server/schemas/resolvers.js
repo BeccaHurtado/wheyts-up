@@ -62,7 +62,7 @@ const resolvers = {
         },
         addRoutine: async (parent, args, context) => {
             if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user._id });
+                const routine = await Routine.create({ ...args, username: context.user._id});
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },

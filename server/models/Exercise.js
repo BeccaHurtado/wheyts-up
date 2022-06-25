@@ -47,6 +47,7 @@
 //     }
 // )
 
+
 // const Exercise = model('Exercise', exerciseSchema)
 
 // module.exports = Exercise;
