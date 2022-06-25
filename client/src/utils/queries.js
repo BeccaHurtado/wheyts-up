@@ -28,13 +28,5 @@ export const QUERY_ROUTINES = gql`
         createdAt
     }
  }
-    
-HEAD
-`;
-
- HEAD
-`;
-
-`;
-c024d473a023b3d9a29ad742f2e126385c450abf
- feature/apollo-server
+ `   
+;
