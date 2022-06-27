@@ -37,9 +37,7 @@ const RoutineList = ({ routines, title, length }) => {
                             <ListItemText className="text-color" variant="h1">
                                 {routine.exercise1}
                             </ListItemText>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText className="text-color">
+                            <ListItemText edge="end" aria-label="comments" className="text-color">
                                 {routine.set1} x {routine.rep1}
                             </ListItemText>
                         </ListItem>
