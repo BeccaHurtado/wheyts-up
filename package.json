@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/BeccaHurtado/wheyts-up/issues"
   },
-  "homepage": "https://github.com/BeccaHurtado/wheyts-up#readme",
+  "homepage": "https://github.com/BeccaHurtado/wheyts-up",
   "devDependencies": {
     "concurrently": "^7.1.0"
   }
