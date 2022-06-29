@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 // sx={{ bgcolor: grey[500] }}
 import RoutineForm from '../RoutineForm/index.jsx'
 import Auth from "../../utils/auth"
-
+import './header.css'
 // const pages = ['login', 'signup'];
 // const settings = ['Profile', 'Logout'];
 
@@ -21,7 +21,7 @@ const ResponsiveAppBar = ( {client} ) => {
     Auth.logout();
   };
   return (
-    <AppBar position='static'>
+    <AppBar position='static' className="title">
       <Button href="/">
         <Typography variant="h3" color="white">
         WHEYTS UP

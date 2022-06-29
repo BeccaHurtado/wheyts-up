@@ -47,7 +47,7 @@ const RoutineForm = ({client}) => {
             }
         })
 
-        window.location.reload("")
+        window.location.assign("")
     }
 
     return (

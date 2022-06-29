@@ -24,14 +24,14 @@ const RoutineList = ({ routines, title, length }) => {
 
                 {routines && routines.map(routine => (
                     <List sx={{ bgcolor: 'background.paper' }} key={routine._id} className="lists">
-                        <Typography className="username-text" align="start" variant="h6" textTransform="uppercase">{routine.username.username}</Typography>
+                        <Typography className="username-text" align="start" variant="h5" textTransform="uppercase">{routine.username.username}</Typography>
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <FitnessCenterIcon />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={routine.routineName} secondary={routine.createdAt} className="listName" />
+                            <ListItemText primary={routine.routineName} secondary={routine.workoutType} className="listName" />
                         </ListItem>
 
                         <ListItem>
