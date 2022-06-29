@@ -13,20 +13,20 @@ type Routine {
     workoutType: String
     username: User
     exercise1: String
-    set1: Int
-    rep1: Int
+    set1: String
+    rep1: String
     exercise2: String
-    set2: Int
-    rep2: Int
+    set2: String
+    rep2: String
     exercise3: String
-    set3: Int
-    rep3: Int
+    set3: String
+    rep3: String
     exercise4: String
-    set4: Int
-    rep4: Int
+    set4: String
+    rep4: String
     exercise5: String
-    set5: Int
-    rep5: Int
+    set5: String
+    rep5: String
     createdAt: String
 }
 
@@ -52,7 +52,3 @@ type Mutation {
 `;
 
 module.exports = typeDefs;
-// addExercise(name: String!, equipment: String!, time: Int!, weight: Int!, sets: Int!, reps: Int!, routineId:ID): Exercise
-// deleteExercise(_id: ID!): Exercise
-// editExercise(_id: ID!, name: String!): Exercise
-// export the typeDefs

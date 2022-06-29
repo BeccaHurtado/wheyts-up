@@ -15,7 +15,7 @@ import Auth from "../../utils/auth"
 const pages = ['login', 'signup'];
 const settings = ['Profile', 'Logout'];
 
-const ResponsiveAppBar = ( loggedIn ) => {
+const ResponsiveAppBar = ( {client} ) => {
 
   const logout = event => {
     event.preventDefault();
@@ -34,7 +34,7 @@ const ResponsiveAppBar = ( loggedIn ) => {
        <Button href="/" onClick={logout}
         >Logout
         </Button>
-        <div className="mb-3"><RoutineForm /></div>
+        <div className="mb-3"><RoutineForm client={client}/></div>
         </>
         ) : (
         <>

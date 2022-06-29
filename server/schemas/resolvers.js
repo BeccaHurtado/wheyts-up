@@ -61,6 +61,10 @@ const resolvers = {
             return { token, user };
         },
         addRoutine: async (parent, args, context) => {
+            console.log(context.user)
+            console.log(args)
+            console.log("here")
+            // const {inputFields} = args
             if (context.user) {
                 const routine = await Routine.create({ ...args, username: context.user._id});
 
@@ -69,11 +73,11 @@ const resolvers = {
                     { $push: { routine: routine._id } },
                     { new: true }
                 );
-
+                    console.log(routine)
                 return routine;
             }
 
-            throw new AuthenticationError('You need to be logged in!');
+            // throw new AuthenticationError('You need to be logged in!');
         },
         // addExercise: async (parent, { name, equipment, time, weight, sets, reps, routineId }, context) => {
         //     if (context.user) {

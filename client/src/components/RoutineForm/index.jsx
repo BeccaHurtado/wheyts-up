@@ -6,8 +6,9 @@ import { Fab, Grid, Paper, Typography, TextField, FormControl } from '@mui/mater
 import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/system'
 
-const RoutineForm = () => {
-    const [addRoutine, { error }] = useMutation(ADD_ROUTINE)
+const RoutineForm = ({client}) => {
+   
+    const [addRoutine, { error }] = useMutation(ADD_ROUTINE, {client} )
 
     const [inputFields, setInputField] = useState([{
         routineName: "",
@@ -29,12 +30,6 @@ const RoutineForm = () => {
         rep5: ""
     }])
 
-    // const handleChange = (event) => {
-    //     const { name, value } = event.target
-    //     setInputField({ ...inputFields, [name]: value })
-    // }
-
-    
     const handleChangeInput = (index, event ) => {
         const values = [...inputFields]
         values[index][event.target.name] = event.target.value
@@ -42,11 +37,16 @@ const RoutineForm = () => {
     }
     
     const handleSubmit = async(event) => {
+        console.log(inputFields)
+        console.log(setInputField)
         await addRoutine({
             variables: {
-                inputFields: {...setInputField}
+                ...inputFields[0]
+                // inputFields: {...setInputField}
             }
         })
+
+        window.location.reload("")
     }
 
     return (

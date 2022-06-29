@@ -7,7 +7,7 @@ function Home() {
     const { loading, data } = useQuery(QUERY_ROUTINES)
     const routines = data?.routines || []
     console.log(routines)
-
+    
     return (
         <main>
             <div>
