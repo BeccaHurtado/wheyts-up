@@ -2,18 +2,18 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom"
-import { grey } from "@mui/material/colors" 
+// import { Link } from "react-router-dom"
+// import { grey } from "@mui/material/colors" 
 // const navGrey = grey[500]
 // sx={{ bgcolor: grey[500] }}
 import RoutineForm from '../RoutineForm/index.jsx'
 import Auth from "../../utils/auth"
 
 
-const pages = ['login', 'signup'];
-const settings = ['Profile', 'Logout'];
+// const pages = ['login', 'signup'];
+// const settings = ['Profile', 'Logout'];
 
 const ResponsiveAppBar = ( {client} ) => {
 
@@ -24,7 +24,7 @@ const ResponsiveAppBar = ( {client} ) => {
   return (
     <AppBar position='static'>
       <Button href="/">
-        <Typography variant="h3">
+        <Typography variant="h3" color="white">
         WHEYTS UP
         </Typography>
       </Button>

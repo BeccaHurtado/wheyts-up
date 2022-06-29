@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
-import background from "./images/pattern-background.jpg"
+import background from "./images/smaller-background.png"
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({

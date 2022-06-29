@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_ROUTINE } from '../../utils/mutations'
 import Button from '@mui/material/Button'
-import { Fab, Grid, Paper, Typography, TextField, FormControl } from '@mui/material'
+import { Fab, Grid, Typography, TextField} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/system'
-
+import './routineForm.css'
 const RoutineForm = ({client}) => {
    
     const [addRoutine, { error }] = useMutation(ADD_ROUTINE, {client} )
@@ -51,8 +51,10 @@ const RoutineForm = ({client}) => {
 
     return (
         <Container>
-            <h1>Add A Routine!</h1>
-            <form onSubmit={handleSubmit}>
+            <Typography variant="" align="center"></Typography>
+            <Grid container columns={{ xs: 6, sm: 8, md: 12 }} className="form-container" justifyContent="center" align="center">
+                <Grid item xs={6} sm={8} md={12}>
+                <form onSubmit={handleSubmit} className="form-control">
                 { inputFields.map((inputFields, index ) => (
                     <div key={index}>
                         <TextField
@@ -190,12 +192,14 @@ const RoutineForm = ({client}) => {
                             value={inputFields.rep5}
                             onChange={event => handleChangeInput(index, event)}
                         />
-                        <Button onClick={handleSubmit}>
-                            <AddIcon/>
-                        </Button>
                     </div>
                 ))}
-            </form>
+                </form>
+                    <Button onClick={handleSubmit} variant="outlined">
+                    Add Routine
+                    </Button>
+            </Grid>
+            </Grid>
         </Container>
     );
 }
