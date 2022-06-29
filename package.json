@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BeccaHurtado/wheyts-up/issues"
+    "url": "https://github.com/beccahurtado/wheyts-up/issues"
   },
-  "homepage": "https://github.com/BeccaHurtado/wheyts-up",
+  "homepage": "https://beccahurtado.github.io/wheyts-up",
   "devDependencies": {
     "concurrently": "^7.1.0"
   }
