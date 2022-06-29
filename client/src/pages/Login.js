@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
-// import Login from '/pages'
+import './login.css'
 import Auth from '../utils/auth';
 
 import {
@@ -12,7 +12,8 @@ import {
   Button,
   Paper,
   Grid,
-  Typography
+  Typography,
+  Box
 } from "@mui/material";
 
 const Login = (props) => {
@@ -47,11 +48,16 @@ const Login = (props) => {
   ;
 
   return (
-    <Paper bgcolor="background.paper" align="center" sx={{ height: 800 }}>
-      <form className="Form" onSubmit={handleFormSubmit}>
-        <br></br>
-        <br></br>
-
+    <Grid container justifyContent="center" alignItems="center">
+      <Grid item>
+      <Box sx={{
+      width: 800, 
+      height: 800, 
+      backgroundColor: 'dark', 
+      '&:hover': {
+      backgroundColor: 'black',
+      opacity: [0.9, 0.8, 0.7]}}}>
+      <form className="form" onSubmit={handleFormSubmit}>
       <FormControl>
           <InputLabel htmlFor="my-input">Email address</InputLabel>
           <Input  
@@ -65,9 +71,6 @@ const Login = (props) => {
             Please enter your email above.
           </FormHelperText>
       </FormControl>
-
-        <br></br>
-
         <FormControl>
           <InputLabel htmlFor="my-input">Password</InputLabel>
           <Input 
@@ -81,12 +84,11 @@ const Login = (props) => {
             Please enter your Password above.
           </FormHelperText>
        </FormControl>
-
-        <br></br>
-
-        <Button variant="outlined" type='submit'>Submit</Button>
+        <Button variant="outlined" type='submit' className="submit-button">Submit</Button>
       </form>
-    </Paper>
+    </Box>
+      </Grid>
+    </Grid>
   );
 };
 
