@@ -24,6 +24,7 @@ const RoutineList = ({ routines, title, length }) => {
 
                 {routines && routines.map(routine => (
                     <List sx={{ bgcolor: 'background.paper' }} key={routine._id} className="lists">
+                        <Typography className="username-text" align="start" variant="h6" textTransform="uppercase">{routine.username.username}</Typography>
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>

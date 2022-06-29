@@ -11,7 +11,6 @@ import Button from '@mui/material/Button';
 import RoutineForm from '../RoutineForm/index.jsx'
 import Auth from "../../utils/auth"
 
-
 // const pages = ['login', 'signup'];
 // const settings = ['Profile', 'Logout'];
 

@@ -6,6 +6,7 @@ import { Fab, Grid, Typography, TextField} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import { Container } from '@mui/system'
 import './routineForm.css'
+
 const RoutineForm = ({client}) => {
    
     const [addRoutine, { error }] = useMutation(ADD_ROUTINE, {client} )
@@ -54,7 +55,7 @@ const RoutineForm = ({client}) => {
             <Typography variant="" align="center"></Typography>
             <Grid container columns={{ xs: 6, sm: 8, md: 12 }} className="form-container" justifyContent="center" align="center">
                 <Grid item xs={6} sm={8} md={12}>
-                <form onSubmit={handleSubmit} className="form-control">
+                <form onSubmit={handleSubmit} className="form-control" textTransform="capitalize">
                 { inputFields.map((inputFields, index ) => (
                     <div key={index}>
                         <TextField
