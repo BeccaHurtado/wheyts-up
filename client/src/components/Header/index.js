@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 import { grey } from "@mui/material/colors" 
 // const navGrey = grey[500]
 // sx={{ bgcolor: grey[500] }}
-
+import RoutineForm from '../RoutineForm/index.jsx'
 import Auth from "../../utils/auth"
 
 
@@ -17,6 +17,10 @@ const settings = ['Profile', 'Logout'];
 
 const ResponsiveAppBar = ( loggedIn ) => {
 
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <AppBar position='static'>
       <Button href="/">
@@ -24,17 +28,20 @@ const ResponsiveAppBar = ( loggedIn ) => {
         WHEYTS UP
         </Typography>
       </Button>
+
        {Auth.loggedIn() ? (
-       <Button
-        onClick={() => Auth.logout}
+         <>
+       <Button href="/" onClick={logout}
         >Logout
         </Button>
-        ) : null 
-      }
+        <div className="mb-3"><RoutineForm /></div>
+        </>
+        ) : (
+        <>
         <Button href="/login">Login</Button>
         <Button href="/signup">Signup</Button>
-      
-     
+        </>
+        )}
     </AppBar>
   )
   // const [anchorElNav, setAnchorElNav] = React.useState(null);

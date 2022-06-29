@@ -19,46 +19,46 @@ const routineSchema = new Schema(
             type: String
         },
         set1: {
-            type: Number
+            type: String
         },
         rep1: {
-            type: Number
+            type: String
         },
         exercise2: {
             type: String
         },
         set2: {
-            type: Number
+            type: String
         },
         rep2: {
-            type: Number
+            type: String
         },
         exercise3: {
             type: String
         },
         set3: {
-            type: Number
+            type: String
         },
         rep3: {
-            type: Number
+            type: String
         },
         exercise4: {
             type: String
         },
         set4: {
-            type: Number
+            type: String
         },
         rep4: {
-            type: Number
+            type: String
         },
         exercise5: {
             type: String
         },
         set5: {
-            type: Number
+            type: String
         },
         rep5: {
-            type: Number
+            type: String
         },
         createdAt: {
             type: Date,

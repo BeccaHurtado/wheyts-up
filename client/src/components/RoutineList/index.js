@@ -37,7 +37,7 @@ const RoutineList = ({ routines, title, length }) => {
                             <ListItemText className="text-color" variant="h1">
                                 {routine.exercise1}
                             </ListItemText>
-                            <ListItemText edge="end" aria-label="comments" className="text-color">
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
                                 {routine.set1} x {routine.rep1}
                             </ListItemText>
                         </ListItem>
@@ -47,11 +47,17 @@ const RoutineList = ({ routines, title, length }) => {
                             <ListItemText className="text-color">
                                 {routine.exercise2}
                             </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set2} x {routine.rep2}
+                            </ListItemText>
                         </ListItem>
                         <Divider variant="middle" component="li" />
                         <ListItem>
                             <ListItemText className="text-color">
                                 {routine.exercise3}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set3} x {routine.rep3}
                             </ListItemText>
                         </ListItem>
                         <Divider variant="middle" component="li" />
@@ -59,11 +65,17 @@ const RoutineList = ({ routines, title, length }) => {
                             <ListItemText className="text-color">
                                 {routine.exercise4}
                             </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set4} x {routine.rep4}
+                            </ListItemText>
                         </ListItem>
                         <Divider variant="middle" component="li" />
                         <ListItem>
                             <ListItemText className="text-color">
                                 {routine.exercise5}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set5} x {routine.rep5}
                             </ListItemText>
                         </ListItem>
                         <Divider variant="middle" component="li" />
