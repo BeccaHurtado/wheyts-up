@@ -24,5 +24,8 @@
   "homepage": "https://beccahurtado.github.io/wheyts-up",
   "devDependencies": {
     "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
