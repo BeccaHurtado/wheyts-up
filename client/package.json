@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
+  "homepage": "https://beccahurtado.github.io/wheyts-up",
   "dependencies": {
     "@apollo/client": "^3.6.5",
     "@emotion/react": "^11.9.0",
