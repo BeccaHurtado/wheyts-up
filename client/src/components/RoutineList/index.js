@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './routine.css'
+import Divider from '@mui/material/Divider'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
@@ -21,33 +20,66 @@ const RoutineList = ({ routines, title, length }) => {
 
     return (
         <div>
-            {/* <h3>{title}</h3>
-            {routines && routines.map(routine => (
-                <div key={routine._id}>
-                    <p>
-                        <Link
-                            to={`/profile/${routine.username}`}
-                        >
-                            {routine.username}
-                        </Link>
-                        {routine.createdAt}
-                    </p>
-                </div>
-            ))} */}
-
-
             <div className="listContainer">
 
                 {routines && routines.map(routine => (
-                    <List sx={{ bgcolor: 'background.paper' }} key={routine._id}>
+                    <List sx={{ bgcolor: 'background.paper' }} key={routine._id} className="lists">
+                        <Typography className="username-text" align="start" variant="h5" textTransform="uppercase">{routine.username.username}</Typography>
                         <ListItem>
                             <ListItemAvatar>
                                 <Avatar>
                                     <FitnessCenterIcon />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={routine.routineName} secondary={routine.createdAt} className="listName" />
+                            <ListItemText primary={routine.routineName} secondary={routine.workoutType} className="listName" />
                         </ListItem>
+
+                        <ListItem>
+                            <ListItemText className="text-color" variant="h1">
+                                {routine.exercise1}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set1} x {routine.rep1}
+                            </ListItemText>
+                        </ListItem>
+
+                        <Divider variant="middle" component="li" />
+                        <ListItem>
+                            <ListItemText className="text-color">
+                                {routine.exercise2}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set2} x {routine.rep2}
+                            </ListItemText>
+                        </ListItem>
+                        <Divider variant="middle" component="li" />
+                        <ListItem>
+                            <ListItemText className="text-color">
+                                {routine.exercise3}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set3} x {routine.rep3}
+                            </ListItemText>
+                        </ListItem>
+                        <Divider variant="middle" component="li" />
+                        <ListItem>
+                            <ListItemText className="text-color">
+                                {routine.exercise4}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set4} x {routine.rep4}
+                            </ListItemText>
+                        </ListItem>
+                        <Divider variant="middle" component="li" />
+                        <ListItem>
+                            <ListItemText className="text-color">
+                                {routine.exercise5}
+                            </ListItemText>
+                            <ListItemText edge="end" aria-label="comments" align="end" className="text-color reps">
+                                {routine.set5} x {routine.rep5}
+                            </ListItemText>
+                        </ListItem>
+                        <Divider variant="middle" component="li" />
                         <ListItem>
                         <Typography className="username" component="legend">Rating</Typography>
                         <Rating

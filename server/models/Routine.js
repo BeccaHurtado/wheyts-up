@@ -15,12 +15,51 @@ const routineSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        exercises: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Exercise'
-            }
-        ],
+        exercise1: {
+            type: String
+        },
+        set1: {
+            type: String
+        },
+        rep1: {
+            type: String
+        },
+        exercise2: {
+            type: String
+        },
+        set2: {
+            type: String
+        },
+        rep2: {
+            type: String
+        },
+        exercise3: {
+            type: String
+        },
+        set3: {
+            type: String
+        },
+        rep3: {
+            type: String
+        },
+        exercise4: {
+            type: String
+        },
+        set4: {
+            type: String
+        },
+        rep4: {
+            type: String
+        },
+        exercise5: {
+            type: String
+        },
+        set5: {
+            type: String
+        },
+        rep5: {
+            type: String
+        },
         createdAt: {
             type: Date,
             default: Date.now,

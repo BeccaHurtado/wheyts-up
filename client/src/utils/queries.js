@@ -10,17 +10,23 @@ export const QUERY_ROUTINES = gql`
             _id
             username
         }
-        exercises {
-            _id
-            name
-            equipment
-            time
-            weight
-            sets
-            reps
-        }
+    exercise1
+    set1
+    rep1
+    exercise2
+    set2
+    rep2
+    exercise3
+    set3
+    rep3
+    exercise4
+    set4
+    rep4
+    exercise5
+    set5
+    rep5
         createdAt
     }
  }
-    
-`;
+ `   
+;
