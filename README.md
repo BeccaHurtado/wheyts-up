@@ -18,5 +18,8 @@ This app allows individuals to create new workout routines for themselves and ra
 * Material UI
 * Apollo-server
 
+## Screenshot
+![WheytsUp-screenshot](https://user-images.githubusercontent.com/94418477/181080864-35471f2c-1866-406f-b9a9-f68be649502b.png)
+
 ## Credits
 Site built by Becca, Jace, Bryan, and Kiri
